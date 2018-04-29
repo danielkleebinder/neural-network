@@ -12,10 +12,11 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class Sigmoid implements ActivationFunction {
+    private static final long serialVersionUID = 1613503183509679914L;
 
     @Override
     public double activate(double x) {
-        return 1.0 / (1.0 + Math.pow(Math.E, -x));
+        return 1.0 / (1.0 + Math.exp(-x));
     }
 
     @Override

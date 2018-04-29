@@ -1,13 +1,12 @@
-package test;
+package test.junit;
 
 import at.fhtw.ai.nn.activation.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActivationFunctionTest {
-
-    private static final Double DELTA = 0.0001;
+    private static final Double DELTA = 0.00001;
 
     @Test
     void shouldReturnSameValuesForIdentity() {

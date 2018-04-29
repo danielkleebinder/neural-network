@@ -1,4 +1,4 @@
-package test;
+package test.learning;
 
 import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
@@ -9,8 +9,8 @@ import test.loader.DigitImage;
 import test.loader.DigitImageLoadingService;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * TrainMain program entry point.
@@ -20,7 +20,7 @@ import java.util.List;
  * @author Daniel Kleebinder
  * @since 0.0.1
  */
-public class Train2Main {
+public class TrainMain {
     public static void main(String[] args) {
         int numberOfInputNeurons = 28 * 28;
         int numberOfOutputNeurons = 10;
@@ -30,6 +30,7 @@ public class Train2Main {
         Layer outputLayer = Utils.createLayer("Output Layer", numberOfOutputNeurons);
         Layer hiddenLayer = Utils.createLayer("Hidden Layer", numberOfHiddenNeurons);
 
+
         NeuralNetwork neuralNetwork = new NeuralNetwork();
         neuralNetwork.getLayers().add(inputLayer);
         neuralNetwork.getLayers().add(hiddenLayer);
@@ -38,7 +39,7 @@ public class Train2Main {
         neuralNetwork.connectLayersInOrder();
 
         BackPropagation backPropagation = new BackPropagation();
-        backPropagation.setLearningRate(0.05);
+        backPropagation.setLearningRate(0.2);
         backPropagation.setMomentum(0.9);
         backPropagation.setMeanSquareError(0.005);                     // Change to 0.005 later
         backPropagation.setNeuralNetwork(neuralNetwork);
@@ -52,7 +53,6 @@ public class Train2Main {
         List<DigitImage> trainImages = null;
         try {
             trainImages = dilsTrainData.loadDigitImages();
-            Collections.shuffle(trainImages);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,39 +62,46 @@ public class Train2Main {
         }
 
         System.out.println("Learning in Progress...");
+        int iterations = 0;
+        int average = 1000;
+        double sum = 0.0;
         double networkError;
-        for (int i = 0; i < trainImages.size(); i++) {
-            DigitImage digitImage = trainImages.get(i);
-            for (int j = 0; j < digitImage.getData().length; j++) {
-                inputLayer.getNeurons().get(j).setValue(digitImage.getData()[j]);
-                inputLayer.getNeurons().get(j).getBias().setValue(0.0);
-                inputLayer.getNeurons().get(j).getBias().setWeight(0.0);
+        double ne = 1.0;
+        Random rnd = new Random();
+        do {
+            iterations++;
+
+            DigitImage digitImage = trainImages.get(rnd.nextInt(trainImages.size()));
+
+            for (int i = 0; i < digitImage.getData().length; i++) {
+                inputLayer.getNeurons().get(i).setValue(digitImage.getData()[i]);
             }
-            for (int j = 0; j < 10; j++) {
-                backPropagation.getDesiredOutputValues().set(j, 0.0);
+
+            for (int i = 0; i < 10; i++) {
+                backPropagation.getDesiredOutputValues().set(i, 0.0);
             }
             backPropagation.getDesiredOutputValues().set(digitImage.getLabel(), 1.0);
+            backPropagation.learn();
 
-            int iterations = 0;
-            do {
-                iterations++;
-                backPropagation.learn();
-                networkError = backPropagation.networkError();
-            } while (networkError > backPropagation.getMeanSquareError() && iterations < 512);
-            if ((i + 1) % 500 == 0) {
+            networkError = backPropagation.networkError();
+            sum += networkError;
+            if (iterations % average == 0) {
+                ne = sum / (double) average;
+                System.out.println("  -> Iteration-" + iterations + ": " + (sum / (double) average));
+                sum = 0.0;
+            }
+            if (iterations % (average * 30) == 0) {
                 System.out.println("     -> Quick saving Neural Network ...");
                 save(neuralNetwork);
-                System.out.println("     -> Successfully Saved! Pausing for 10 Seconds ...");
+                System.out.println("     -> Successfully Saved! Pausing for 30 Seconds ...");
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(30000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            int progress = (int) Math.round(((i + 1) / (double) trainImages.size()) * 100.0);
-            System.out.printf("[%03d%%] - %05d of %05d done (Square Error: %f, Iterations: %d)\n", progress, (i + 1), trainImages.size(), networkError, iterations);
-        }
-        System.out.println("Learning Done!");
+        } while (networkError > backPropagation.getMeanSquareError() || ne > backPropagation.getMeanSquareError());
+        System.out.println("Learning Done! (Iterations: " + iterations + ")");
 
         System.out.println("Now Serializing Neural Network...");
         save(neuralNetwork);
@@ -103,7 +110,7 @@ public class Train2Main {
 
     private static void save(NeuralNetwork neuralNetwork) {
         try {
-            Utils.serialize(neuralNetwork, "C:/Users/Daniel/Desktop/NeuralNetwork_M23.dat");
+            Utils.serialize(neuralNetwork, "C:/Users/Daniel/Desktop/NeuralNetwork.dat");
         } catch (IOException e) {
             e.printStackTrace();
         }/// TODO: Change bias weight back to 1.0

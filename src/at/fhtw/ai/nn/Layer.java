@@ -15,6 +15,7 @@ import java.util.List;
  * @since 0.0.1
  */
 public class Layer implements Serializable {
+    private static final long serialVersionUID = -8677958591398475538L;
 
     /**
      * Layer name.
@@ -79,7 +80,17 @@ public class Layer implements Serializable {
     public void connectInput(Layer inputLayer) {
         inputLayer.getNeurons().forEach(neuron -> {
             neurons.forEach(current -> current.connectInput(neuron));
+
         });
+    }
+
+    /**
+     * Sets all neurons to the given fired state.
+     *
+     * @param fired True if fired, otherwise false.
+     */
+    public void setNeuronsFired(boolean fired) {
+        neurons.forEach(neuron -> neuron.setFired(fired));
     }
 
     /**
@@ -93,7 +104,7 @@ public class Layer implements Serializable {
      * Fires all neurons in parallel.
      */
     public void fireParallel() {
-        neurons.parallelStream().forEach(neuron -> neuron.fire(true));
+        neurons.parallelStream().forEach(neuron -> neuron.fire(false));
     }
 
     @Override

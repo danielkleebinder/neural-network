@@ -14,6 +14,7 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class Step implements ActivationFunction {
+    private static final long serialVersionUID = -3516386212264246948L;
 
     @Override
     public double activate(double x) {

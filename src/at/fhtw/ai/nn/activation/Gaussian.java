@@ -12,14 +12,15 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class Gaussian implements ActivationFunction {
+    private static final long serialVersionUID = 8752888064634480558L;
 
     @Override
     public double activate(double x) {
-        return Math.pow(Math.E, -(x * x));
+        return Math.exp(-(x * x));
     }
 
     @Override
     public double derivative(double x) {
-        return -2.0 * x * Math.pow(Math.E, -(x * x));
+        return -2.0 * x * activate(x);
     }
 }

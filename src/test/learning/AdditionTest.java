@@ -1,4 +1,4 @@
-package test;
+package test.learning;
 
 import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;

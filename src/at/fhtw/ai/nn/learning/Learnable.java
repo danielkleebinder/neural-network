@@ -11,6 +11,8 @@ package at.fhtw.ai.nn.learning;
 public interface Learnable {
     /**
      * Invokes the learning algorithm.
+     *
+     * @return True if network was adjusted, otherwise false.
      */
-    void learn();
+    boolean learn();
 }

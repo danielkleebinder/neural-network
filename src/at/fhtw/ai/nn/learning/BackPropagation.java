@@ -40,7 +40,7 @@ public class BackPropagation extends LearningAlgorithm {
             for (Neuron neuron : currentLayer.getNeurons()) {
                 double sum = 0.0;
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
-                    sum += outputSynapse.destinationNeuron.errorValue * outputSynapse.weight;
+                    sum += outputSynapse.destinationNeuron.errorValue * outputSynapse.weight;                           /// TODO: CHANGE BACK TO MULTIPLICATION: sum += outputSynapse.destinationNeuron.errorValue * outputSynapse.weight;
                 }
                 neuron.errorValue = sum * neuron.getActivationFunction().derivative(neuron.value);
             }
@@ -48,19 +48,31 @@ public class BackPropagation extends LearningAlgorithm {
     }
 
     private void adjustLayerWeights() {
-        for (int i = neuralNetwork.getLayers().size() - 2; i >= 0; i--) {
+        for (int i = neuralNetwork.getLayers().size() - 1; i >= 0; i--) {
             Layer currentLayer = neuralNetwork.getLayers().get(i);
             for (Neuron neuron : currentLayer.getNeurons()) {
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
-                    double dw = learningRate * outputSynapse.destinationNeuron.errorValue * neuron.value;
-                    double dm = dw + momentum * outputSynapse.getChange();
-                    outputSynapse.weight += dm;
-                    outputSynapse.setChange(dw);
-                }
+                    double dw = learningRate * (outputSynapse.destinationNeuron.errorValue * neuron.value);             /// TODO: CHANGE BACK TO MULTIPLICATION: double dw = learningRate * outputSynapse.destinationNeuron.errorValue * neuron.value;
+                    double dm = dw + (momentum * outputSynapse.change);
 
+                    outputSynapse.weight += dm;
+                    outputSynapse.change = dw;
+                }
                 Bias bias = neuron.getBias();
-                double dw = learningRate * neuron.errorValue * bias.getValue();
-                bias.weight += dw;
+                bias.weight += learningRate * neuron.errorValue * bias.getValue();
+            }
+        }
+    }
+
+    private void resetNetwork() {
+        for (Neuron neuron : neuralNetwork.getInputLayer().getNeurons()) {
+            neuron.errorValue = 0.0;
+        }
+        for (Layer layer : neuralNetwork.getLayers()) {
+            for (Neuron neuron : layer.getNeurons()) {
+                for (Synapse synapse : neuron.getInputSynapses()) {
+                    synapse.change = 0.0;
+                }
             }
         }
     }
@@ -70,11 +82,20 @@ public class BackPropagation extends LearningAlgorithm {
     }
 
     @Override
-    public void learn() {
+    public boolean learn() {
         feedForward();
+
+        // No need for adjusting the network when the success criteria are met already
+        /// TODO: reactivate this check
+        //if (networkError() < meanSquareError) {
+        //    return false;
+        //}
+
+        resetNetwork();
         computeOutputLayerErrors();
         computeHiddenLayerErrors();
         adjustLayerWeights();
+        return true;
     }
 
     /**

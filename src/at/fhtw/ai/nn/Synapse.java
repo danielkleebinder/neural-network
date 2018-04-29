@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @since 0.0.1
  */
 public class Synapse implements Serializable {
+    private static final long serialVersionUID = 4241767284499550300L;
 
     /**
      * Synapse source neuron.

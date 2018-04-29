@@ -12,6 +12,7 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class Sinusoid implements ActivationFunction {
+    private static final long serialVersionUID = 5656466654313704898L;
 
     @Override
     public double activate(double x) {

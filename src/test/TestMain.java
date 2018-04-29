@@ -22,7 +22,7 @@ public class TestMain {
         System.out.println("Loading Neural Network...");
         NeuralNetwork neuralNetwork = null;
         try {
-            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/NeuralNetwork.dat");
+            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E4_C0.dat");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -46,11 +46,9 @@ public class TestMain {
         int correct = 0;
         for (int i = 0; i < testImages.size(); i++) {
             DigitImage digitImage = testImages.get(i);
-
             for (int j = 0; j < digitImage.getData().length; j++) {
-                neuralNetwork.getInputLayer().getNeurons().get(j).setValue(digitImage.getData()[j]);
+                neuralNetwork.getInputLayer().getNeurons().get(j).value = digitImage.getData()[j];
             }
-
             neuralNetwork.fireOutput();
 
             int highestIndex = -1;
@@ -61,7 +59,6 @@ public class TestMain {
                     highestIndex = k;
                     highestOutput = neuron.getValue();
                 }
-
             }
             if (highestIndex == digitImage.getLabel()) {
                 correct++;

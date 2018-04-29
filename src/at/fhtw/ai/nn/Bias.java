@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @since 0.0.1
  */
 public class Bias implements Serializable {
+    private static final long serialVersionUID = -3767736239555053482L;
 
     /**
      * Bias value.

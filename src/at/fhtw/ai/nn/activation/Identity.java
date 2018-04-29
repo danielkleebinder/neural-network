@@ -12,6 +12,7 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class Identity implements ActivationFunction {
+    private static final long serialVersionUID = -6905753012349704117L;
 
     @Override
     public double activate(double x) {

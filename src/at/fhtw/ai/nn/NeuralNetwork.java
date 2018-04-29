@@ -5,6 +5,7 @@ import at.fhtw.ai.nn.activation.ActivationFunction;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * The neural network is an artificial replica of a biological brain. It uses layers, neurons and synapses to compute and predict certain values.
@@ -15,6 +16,7 @@ import java.util.List;
  * @since 0.0.1
  */
 public class NeuralNetwork implements Serializable {
+    private static final long serialVersionUID = 5429505999185890927L;
 
     /**
      * Contains all layers of the neural network.
@@ -91,10 +93,33 @@ public class NeuralNetwork implements Serializable {
     }
 
     /**
+     * Returns the total number of neurons.
+     *
+     * @return Total number of neurons.
+     */
+    public int getNumberOfNeurons() {
+        if (layers.size() <= 0) {
+            return 0;
+        }
+
+        AtomicInteger result = new AtomicInteger(0);
+        layers.stream().forEach(layer -> result.addAndGet(layer.getNeurons().size()));
+        return result.get();
+    }
+
+    /**
+     * Resets the fired state for all neurons.
+     */
+    private void resetNeuronFiredState() {
+        layers.forEach(layer -> layer.setNeuronsFired(false));
+    }
+
+    /**
      * Fires all neurons in all layers at once.
      */
     public void fire() {
         layers.stream().forEach(layer -> layer.fire());
+        resetNeuronFiredState();
     }
 
     /**
@@ -102,5 +127,6 @@ public class NeuralNetwork implements Serializable {
      */
     public void fireOutput() {
         getOutputLayer().fireParallel();
+        resetNeuronFiredState();
     }
 }

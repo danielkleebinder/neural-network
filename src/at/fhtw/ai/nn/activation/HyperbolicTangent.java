@@ -12,6 +12,7 @@ package at.fhtw.ai.nn.activation;
  * @since 0.0.1
  */
 public class HyperbolicTangent implements ActivationFunction {
+    private static final long serialVersionUID = -8549945472858871417L;
 
     @Override
     public double activate(double x) {

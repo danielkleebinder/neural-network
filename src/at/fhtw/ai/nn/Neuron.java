@@ -2,12 +2,12 @@ package at.fhtw.ai.nn;
 
 import at.fhtw.ai.nn.activation.ActivationFunction;
 import at.fhtw.ai.nn.activation.Identity;
+import at.fhtw.ai.nn.utils.AtomicDouble;
 import at.fhtw.ai.nn.utils.Utils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * An artificial neuron with activation function, bias and input connections.
@@ -18,6 +18,7 @@ import java.util.Random;
  * @since 0.0.1
  */
 public class Neuron implements Serializable {
+    private static final long serialVersionUID = 2743680081104305613L;
 
     /**
      * Contains all neuron input synapses.
@@ -43,6 +44,11 @@ public class Neuron implements Serializable {
      * Latest error value.
      */
     public double errorValue = 0.0;
+
+    /**
+     * If the neuron has fired yet.
+     */
+    private boolean fired = false;
 
 
     /**
@@ -188,6 +194,25 @@ public class Neuron implements Serializable {
     }
 
     /**
+     * Sets if the neuron was fired yet.
+     *
+     * @param fired True if fired, otherwise false.
+     */
+    public void setFired(boolean fired) {
+        this.fired = fired;
+    }
+
+    /**
+     * Returns if the neuron was fired yet.
+     *
+     * @return True if fired, otherwise false.
+     */
+    public boolean isFired() {
+        return fired;
+    }
+
+
+    /**
      * Fires this neuron and calculates the output value.
      *
      * @param parallel True if the firing should be done in multiple threads.
@@ -196,22 +221,28 @@ public class Neuron implements Serializable {
     public double fire(boolean parallel) {
         int dataSize = inputSynapses.size();
 
-        if (dataSize <= 0) {
+        if (fired || dataSize <= 0) {
             return value;
         }
 
-        value = 0.0;
+        final AtomicDouble currentValue = new AtomicDouble(0.0);
         if (parallel) {
             inputSynapses
                     .parallelStream()
-                    .forEach(synapse -> value += synapse.computeOutput());
+                    .forEach(synapse -> currentValue.value += synapse.computeOutput());
         } else {
             for (int i = 0; i < dataSize; i++) {
-                value += inputSynapses.get(i).computeOutput();
+                currentValue.value += inputSynapses.get(i).computeOutput();
             }
         }
-        value += bias.compute();
-        value = activationFunction.activate(value);
+        currentValue.value += bias.compute();
+        currentValue.value = activationFunction.activate(currentValue.value);
+
+        fired = true;
+
+        // Return the final result
+        // This is incredibly important for multithreading
+        value = currentValue.value;
         return value;
     }
 }
