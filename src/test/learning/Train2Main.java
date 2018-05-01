@@ -2,7 +2,6 @@ package test.learning;
 
 import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
-import at.fhtw.ai.nn.Synapse;
 import at.fhtw.ai.nn.activation.Sigmoid;
 import at.fhtw.ai.nn.learning.BackPropagation;
 import at.fhtw.ai.nn.utils.Utils;
@@ -99,10 +98,10 @@ public class Train2Main {
                 //int iterations = 0;
                 //do {
                 //iterations++;
-                    backPropagation.learn();
-                    networkError = backPropagation.networkError();
-                    totalNetworkError += networkError;
-                    totalIterations++;
+                backPropagation.learn();
+                networkError = backPropagation.networkError();
+                totalNetworkError += networkError;
+                totalIterations++;
                 //} while (networkError > backPropagation.getMeanSquareError() && iterations < 512);
                 //totalIterations += iterations;
 

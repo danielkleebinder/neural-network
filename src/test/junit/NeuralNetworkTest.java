@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NeuralNetworkTest {
     private static final Double DELTA = 0.00001;

@@ -66,10 +66,10 @@ public class Layer implements Serializable {
     /**
      * Sets the given activation function as function for all neurons in this layer.
      *
-     * @param activationFunctions Activation function.
+     * @param activationFunction Activation function.
      */
-    public void setActivationFunctions(ActivationFunction activationFunctions) {
-        neurons.forEach(neuron -> neuron.setActivationFunction(activationFunctions));
+    public void setActivationFunctions(ActivationFunction activationFunction) {
+        neurons.forEach(neuron -> neuron.setActivationFunction(activationFunction));
     }
 
     /**
@@ -80,7 +80,6 @@ public class Layer implements Serializable {
     public void connectInput(Layer inputLayer) {
         inputLayer.getNeurons().forEach(neuron -> {
             neurons.forEach(current -> current.connectInput(neuron));
-
         });
     }
 

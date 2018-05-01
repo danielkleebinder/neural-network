@@ -1,9 +1,11 @@
 package test.learning;
 
-import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Sigmoid;
+import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
+import at.fhtw.ai.nn.utils.BackPropagationBuilder;
+import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 import at.fhtw.ai.nn.utils.Utils;
 import test.loader.DigitImage;
 import test.loader.DigitImageLoadingService;
@@ -13,6 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * - Removed OTSU Algorithm
+ * <p>
  * Created On: 29.04.2018
  *
  * @author Daniel Kleebinder
@@ -20,9 +24,14 @@ import java.util.List;
  */
 public class MnistMain {
     public static void main(String[] args) {
+        // Configurations:
+        // -- 93.80% --
+        // Lr: 0.2
+        // M: 0.9
+        // E: 0.005
         double learningRate = 0.2;
         double momentum = 0.9;
-        double meanNetworkError = 0.005;
+        double meanNetworkError = 0.0005;
 
         long startTime = System.currentTimeMillis();
 
@@ -34,29 +43,25 @@ public class MnistMain {
         int numberOfHiddenNeurons = (int) Math.round(Math.sqrt(numberOfInputNeurons * numberOfOutputNeurons));
 
         System.out.println("Setting up Neural Network...");
-        Layer inputLayer = Utils.createLayer("Input Layer", numberOfInputNeurons);
-        Layer outputLayer = Utils.createLayer("Output Layer", numberOfOutputNeurons);
-        Layer hiddenLayer = Utils.createLayer("Hidden Layer", numberOfHiddenNeurons);
+        NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
+                .layer("Input Layer", numberOfInputNeurons)
+                .layer("Hidden layer", numberOfHiddenNeurons)
+                .layer("Output Layer", numberOfOutputNeurons)
+                .activationFunction(new Sigmoid())
+                .initializer(new XavierInitializer())
+                .build();
 
-        NeuralNetwork neuralNetwork = new NeuralNetwork();
-        neuralNetwork.getLayers().add(inputLayer);
-        neuralNetwork.getLayers().add(hiddenLayer);
-        neuralNetwork.getLayers().add(outputLayer);
-        neuralNetwork.setActivationFunctions(new Sigmoid());
-        neuralNetwork.connectLayersInOrder();
-
-        BackPropagation backPropagation = new BackPropagation();
-        backPropagation.setLearningRate(learningRate);
-        backPropagation.setMomentum(momentum);
-        backPropagation.setMeanSquareError(meanNetworkError);
-        backPropagation.setNeuralNetwork(neuralNetwork);
+        BackPropagation backPropagation = new BackPropagationBuilder()
+                .learningRate(learningRate)
+                .momentum(momentum)
+                .neuralNetwork(neuralNetwork)
+                .build();
 
         System.out.println("Loading Train Images...");
         DigitImageLoadingService dilsTrainData = new DigitImageLoadingService(
                 "C:/Users/Daniel/Desktop/train/train-labels-idx1-ubyte.dat",
                 "C:/Users/Daniel/Desktop/train/train-images-idx3-ubyte.dat"
         );
-
 
         List<DigitImage> trainImages = null;
         try {
@@ -80,9 +85,7 @@ public class MnistMain {
             Collections.shuffle(trainImages);
             for (DigitImage digitImage : trainImages) {
                 // Set neural network input parameters
-                for (int i = 0; i < inputLayer.getNeurons().size(); i++) {
-                    inputLayer.getNeurons().get(i).value = digitImage.getData()[i];
-                }
+                neuralNetwork.input(digitImage.getData());
 
                 // Set desired output values
                 for (int i = 0; i < backPropagation.getDesiredOutputValues().size(); i++) {

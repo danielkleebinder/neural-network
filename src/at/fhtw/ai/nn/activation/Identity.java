@@ -1,9 +1,9 @@
 package at.fhtw.ai.nn.activation;
 
 /**
- * Simple, standard identity activation function. The input equals the output.<br/>
- * <code>f(x) = x</code><br/><br/>
- * Derivative:<br/>
+ * Simple, standard identity activation function. The input equals the output.<br>
+ * <code>f(x) = x</code><br><br>
+ * Derivative:<br>
  * <code>f'(x) = 1</code>
  * <p>
  * Created On: 24.04.2018

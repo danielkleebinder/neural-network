@@ -1,7 +1,6 @@
 package test;
 
 import at.fhtw.ai.nn.NeuralNetwork;
-import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.utils.Utils;
 import test.loader.DigitImage;
 import test.loader.DigitImageLoadingService;
@@ -22,7 +21,8 @@ public class TestMain {
         System.out.println("Loading Neural Network...");
         NeuralNetwork neuralNetwork = null;
         try {
-            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E4_C0.dat");
+            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E5_C0.dat");
+            //neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/_NeuralNetwork_E10_93_80.dat");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -46,18 +46,16 @@ public class TestMain {
         int correct = 0;
         for (int i = 0; i < testImages.size(); i++) {
             DigitImage digitImage = testImages.get(i);
-            for (int j = 0; j < digitImage.getData().length; j++) {
-                neuralNetwork.getInputLayer().getNeurons().get(j).value = digitImage.getData()[j];
-            }
+            neuralNetwork.input(digitImage.getData());
             neuralNetwork.fireOutput();
 
             int highestIndex = -1;
             double highestOutput = 0.0;
-            for (int k = 0; k < neuralNetwork.getOutputLayer().getNeurons().size(); k++) {
-                Neuron neuron = neuralNetwork.getOutputLayer().getNeurons().get(k);
-                if (highestOutput < neuron.getValue()) {
+            double[] outputs = neuralNetwork.output();
+            for (int k = 0; k < outputs.length; k++) {
+                if (highestOutput < outputs[k]) {
                     highestIndex = k;
-                    highestOutput = neuron.getValue();
+                    highestOutput = outputs[k];
                 }
             }
             if (highestIndex == digitImage.getLabel()) {

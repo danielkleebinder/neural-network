@@ -1,12 +1,12 @@
 package at.fhtw.ai.nn.activation;
 
 /**
- * Simple, step clamp function.<br/>
- * <code>f(x) = 0 for x <= 0</code><br/>
- * <code>f(x) = 1 for x > 0</code><br/><br/>
- * Derivative:<br/>
- * <code>f(x) = 0 for x != 0</code><br/>
- * <code>f(x) = ? for x = 0</code>
+ * Simple, step clamp function.<br>
+ * <code>f(x) = 0 for x <= 0</code><br>
+ * <code>f(x) = 1 for x > 0</code><br><br>
+ * Derivative:<br>
+ * <code>f'(x) = 0 for x != 0</code><br>
+ * <code>f'(x) = ? for x = 0</code>
  * <p>
  * Created On: 24.04.2018
  *

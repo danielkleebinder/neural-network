@@ -1,9 +1,9 @@
 package at.fhtw.ai.nn.activation;
 
 /**
- * Sinusoid activation function.<br/>
- * <code>f(x) = sin(x)</code><br/><br/>
- * Derivative:<br/>
+ * Sinusoid activation function.<br>
+ * <code>f(x) = sin(x)</code><br><br>
+ * Derivative:<br>
  * <code>f'(x) = cos(x)</code>
  * <p>
  * Created On: 24.04.2018

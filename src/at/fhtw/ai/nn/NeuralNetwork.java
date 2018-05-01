@@ -1,11 +1,12 @@
 package at.fhtw.ai.nn;
 
 import at.fhtw.ai.nn.activation.ActivationFunction;
+import at.fhtw.ai.nn.initialize.Initializer;
+import at.fhtw.ai.nn.initialize.RandomInitializer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * The neural network is an artificial replica of a biological brain. It uses layers, neurons and synapses to compute and predict certain values.
@@ -22,6 +23,16 @@ public class NeuralNetwork implements Serializable {
      * Contains all layers of the neural network.
      */
     private List<Layer> layers = new ArrayList<>(8);
+
+    /**
+     * Initializer for the neural network.
+     */
+    private Initializer initializer = new RandomInitializer();
+
+    /**
+     * Activation function.
+     */
+    private ActivationFunction activationFunction;
 
 
     /**
@@ -73,7 +84,7 @@ public class NeuralNetwork implements Serializable {
      * @param activationFunction New global activation function.
      */
     public void setActivationFunctions(ActivationFunction activationFunction) {
-        layers.forEach(layer -> layer.setActivationFunctions(activationFunction));
+        this.activationFunction = activationFunction;
     }
 
     /**
@@ -93,18 +104,52 @@ public class NeuralNetwork implements Serializable {
     }
 
     /**
-     * Returns the total number of neurons.
+     * Returns a list which contains all neurons in the neural network.
      *
-     * @return Total number of neurons.
+     * @return All neurons of this network.
      */
-    public int getNumberOfNeurons() {
-        if (layers.size() <= 0) {
-            return 0;
-        }
+    public List<Neuron> getNeurons() {
+        List<Neuron> result = new ArrayList<>(512);
+        layers.stream().forEach(layer -> result.addAll(layer.getNeurons()));
+        return result;
+    }
 
-        AtomicInteger result = new AtomicInteger(0);
-        layers.stream().forEach(layer -> result.addAndGet(layer.getNeurons().size()));
-        return result.get();
+    /**
+     * Returns a list which contains all synapses in the neural network.
+     *
+     * @return All synapses of this network.
+     */
+    public List<Synapse> getSynapses() {
+        List<Synapse> result = new ArrayList<>(1024);
+        getNeurons().stream().forEach(neuron -> result.addAll(neuron.getInputSynapses()));
+        return result;
+    }
+
+    /**
+     * Inputs the given values into the input layer.
+     *
+     * @param inputValues Input values.
+     */
+    public void input(double... inputValues) {
+        if (inputValues.length != getInputLayer().getNeurons().size()) {
+            throw new IllegalArgumentException("Number of inputs does not match number of input neurons");
+        }
+        for (int i = 0; i < inputValues.length; i++) {
+            getInputLayer().getNeurons().get(i).value = inputValues[i];
+        }
+    }
+
+    /**
+     * Returns the output of the output layer. This method should only be used after firing the neural network.
+     *
+     * @return Output values.
+     */
+    public double[] output() {
+        double[] result = new double[getOutputLayer().getNeurons().size()];
+        for (int i = 0; i < getOutputLayer().getNeurons().size(); i++) {
+            result[i] = getOutputLayer().getNeurons().get(i).value;
+        }
+        return result;
     }
 
     /**
@@ -113,6 +158,7 @@ public class NeuralNetwork implements Serializable {
     private void resetNeuronFiredState() {
         layers.forEach(layer -> layer.setNeuronsFired(false));
     }
+
 
     /**
      * Fires all neurons in all layers at once.
@@ -128,5 +174,33 @@ public class NeuralNetwork implements Serializable {
     public void fireOutput() {
         getOutputLayer().fireParallel();
         resetNeuronFiredState();
+    }
+
+    /**
+     * Sets the neural network initializer.
+     *
+     * @param initializer Initializer.
+     */
+    public void setInitializer(Initializer initializer) {
+        this.initializer = initializer;
+    }
+
+    /**
+     * Returns the neural network initializer.
+     *
+     * @return Initializer.
+     */
+    public Initializer getInitializer() {
+        return initializer;
+    }
+
+    /**
+     * Initializes the neural network.
+     */
+    public void initialize() {
+        if (activationFunction != null) {
+            layers.forEach(layer -> layer.setActivationFunctions(activationFunction));
+        }
+        initializer.initialize(this);
     }
 }

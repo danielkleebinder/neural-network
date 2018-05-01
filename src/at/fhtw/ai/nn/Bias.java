@@ -29,7 +29,7 @@ public class Bias implements Serializable {
      * Creates a new bias.
      */
     public Bias() {
-        this(Utils.randomBias());
+        this(1.0);
     }
 
     /**

@@ -1,10 +1,11 @@
 package test;
 
-import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Sigmoid;
+import at.fhtw.ai.nn.activation.rectifier.ExponentialRectifier;
+import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
-import at.fhtw.ai.nn.utils.Utils;
+import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 
 import java.util.Random;
 
@@ -22,32 +23,18 @@ public class XORTest {
         int numberOfOutputNeurons = 1;
         int numberOfHiddenNeurons = 5;
 
-        Layer inputLayer = Utils.createLayer("Input Layer", numberOfInputNeurons);
-        Layer outputLayer = Utils.createLayer("Output Layer", numberOfOutputNeurons);
-        Layer hiddenLayer = Utils.createLayer("Hidden Layer", numberOfHiddenNeurons);
-
-        NeuralNetwork neuralNetwork = new NeuralNetwork();
-        neuralNetwork.getLayers().add(inputLayer);
-        neuralNetwork.getLayers().add(hiddenLayer);
-        neuralNetwork.getLayers().add(outputLayer);
-        neuralNetwork.setActivationFunctions(new Sigmoid());
-        neuralNetwork.connectLayersInOrder();
+        NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
+                .inputLayer("Input Layer", numberOfInputNeurons, new ExponentialRectifier())
+                .hiddenLayer("Hidden Layer", numberOfHiddenNeurons, new ExponentialRectifier())
+                .outputLayer("Output Layer", numberOfOutputNeurons, new Sigmoid())
+                .initializer(new XavierInitializer())
+                .build();
 
         BackPropagation backPropagation = new BackPropagation();
         backPropagation.setLearningRate(0.2);
         backPropagation.setMomentum(0.9);
-        backPropagation.setMeanSquareError(0.005);                     // Change to 0.005 later
+        backPropagation.setMeanSquareError(0.005);
         backPropagation.setNeuralNetwork(neuralNetwork);
-/*
-        System.out.println(inputLayer.getNeurons());
-        System.out.println(hiddenLayer.getNeurons());
-        System.out.println(outputLayer.getNeurons());
-        outputLayer.getNeurons().get(0).fire(false);
-        outputLayer.getNeurons().get(1).fire(false);
-
-        if (true == true) {
-            return;
-        }*/
 
         Random rnd = new Random(1);
         int index = 0;
@@ -56,8 +43,7 @@ public class XORTest {
             int b = rnd.nextInt(2);
             int c = a ^ b;
 
-            inputLayer.getNeurons().get(0).setValue(a);
-            inputLayer.getNeurons().get(1).setValue(b);
+            neuralNetwork.input(a, b);
 
             backPropagation.getDesiredOutputValues().clear();
             backPropagation.getDesiredOutputValues().add((double) c);
@@ -76,9 +62,7 @@ public class XORTest {
             int b = rnd.nextInt(2);
             int c = a ^ b;
 
-            inputLayer.getNeurons().get(0).setValue(a);
-            inputLayer.getNeurons().get(1).setValue(b);
-
+            neuralNetwork.input(a, b);
             neuralNetwork.fireOutput();
 
             double r = neuralNetwork.getOutputLayer().getNeurons().get(0).getValue();

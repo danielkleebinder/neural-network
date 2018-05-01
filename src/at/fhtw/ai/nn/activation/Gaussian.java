@@ -1,9 +1,9 @@
 package at.fhtw.ai.nn.activation;
 
 /**
- * Gaussian activation function.<br/>
- * <code>f(x) = e^-x^2</code><br/><br/>
- * Derivative:<br/>
+ * Gaussian activation function.<br>
+ * <code>f(x) = e^-x^2</code><br><br>
+ * Derivative:<br>
  * <code>f'(x) = -2*x*e^-x^2</code>
  * <p>
  * Created On: 24.04.2018

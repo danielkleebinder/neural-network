@@ -68,17 +68,23 @@ public class Utils {
     public static Layer createLayer(String name, int neurons) {
         Layer result = new Layer();
         if (name == null) {
-            result.setName("Layer-" + UUID.randomUUID().toString());
+            result.setName("Layer-" + randomName());
         } else {
             result.setName(name);
         }
         for (int i = 0; i < neurons; i++) {
-            Neuron neuron = createNeuron();
-            neuron.getBias().setValue(randomBias());
-            neuron.getBias().setWeight(randomWeight());
-            result.getNeurons().add(neuron);
+            result.getNeurons().add(createNeuron());
         }
         return result;
+    }
+
+    /**
+     * Creates a random name.
+     *
+     * @return Random name.
+     */
+    public static String randomName() {
+        return UUID.randomUUID().toString();
     }
 
     /**
@@ -91,21 +97,12 @@ public class Utils {
     }
 
     /**
-     * Returns a random weight between -1 and 1.
+     * Returns a random weight between -1.0 and 1.0.
      *
      * @return Random weight.
      */
     public static double randomWeight() {
         return RND.nextDouble() * 2.0 - 1.0;
-    }
-
-    /**
-     * Returns a random bias value (either -1 or 1).
-     *
-     * @return Random bias.
-     */
-    public static double randomBias() {
-        return RND.nextBoolean() ? -1.0 : 1.0;
     }
 
     /**

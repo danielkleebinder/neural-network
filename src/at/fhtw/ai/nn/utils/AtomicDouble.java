@@ -13,9 +13,9 @@ import java.util.Objects;
 public class AtomicDouble {
 
     /**
-     * The double value.
+     * Atomic double value.
      */
-    public double value = 0.0;
+    public double value;
 
     /**
      * Creates a new atomic double with initial value 0.
