@@ -12,9 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NeuralNetworkTest {
-    private static final Double DELTA = 0.00001;
-    private static final Double DELTA_2 = 0.01;
-
+    private static final Double DELTA = 0.01;
 
     @Test
     void shouldHaveCorrectNumberOfNeurons() {
@@ -55,8 +53,8 @@ class NeuralNetworkTest {
     void shouldHaveCorrectInputLayerValues() {
         NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
 
-        assertEquals(1.0, neuralNetwork.getInputLayer().getNeurons().get(0).value, DELTA_2);
-        assertEquals(1.0, neuralNetwork.getInputLayer().getNeurons().get(0).value, DELTA_2);
+        assertEquals(1.0, neuralNetwork.getInputLayer().getNeurons().get(0).value, DELTA);
+        assertEquals(1.0, neuralNetwork.getInputLayer().getNeurons().get(0).value, DELTA);
     }
 
     @Test
@@ -64,9 +62,9 @@ class NeuralNetworkTest {
         NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
         neuralNetwork.fireOutput();
 
-        assertEquals(0.73, neuralNetwork.getLayers().get(1).getNeurons().get(0).value, DELTA_2);
-        assertEquals(0.79, neuralNetwork.getLayers().get(1).getNeurons().get(1).value, DELTA_2);
-        assertEquals(0.69, neuralNetwork.getLayers().get(1).getNeurons().get(2).value, DELTA_2);
+        assertEquals(0.73, neuralNetwork.getLayers().get(1).getNeurons().get(0).value, DELTA);
+        assertEquals(0.79, neuralNetwork.getLayers().get(1).getNeurons().get(1).value, DELTA);
+        assertEquals(0.69, neuralNetwork.getLayers().get(1).getNeurons().get(2).value, DELTA);
     }
 
 
@@ -75,7 +73,7 @@ class NeuralNetworkTest {
         NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
         neuralNetwork.fireOutput();
 
-        assertEquals(0.77, neuralNetwork.getOutputLayer().getNeurons().get(0).value, DELTA_2);
+        assertEquals(0.77, neuralNetwork.getOutputLayer().getNeurons().get(0).value, DELTA);
     }
 
 
@@ -85,7 +83,7 @@ class NeuralNetworkTest {
         BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
         backPropagation.learn();
 
-        assertEquals(0.5929, backPropagation.networkError(), DELTA_2);
+        assertEquals(0.5929, backPropagation.networkError(), DELTA);
     }
 
     @Test
@@ -94,7 +92,7 @@ class NeuralNetworkTest {
         BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
         backPropagation.learn();
 
-        assertEquals(-0.1344, neuralNetwork.getOutputLayer().getNeurons().get(0).errorValue, DELTA_2);
+        assertEquals(-0.1344, neuralNetwork.getOutputLayer().getNeurons().get(0).errorValue, DELTA);
     }
 
     @Test
@@ -103,9 +101,9 @@ class NeuralNetworkTest {
         BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
         backPropagation.learn();
 
-        assertEquals(-0.088, neuralNetwork.getLayers().get(1).getNeurons().get(0).errorValue, DELTA_2);
-        assertEquals(-0.045, neuralNetwork.getLayers().get(1).getNeurons().get(1).errorValue, DELTA_2);
-        assertEquals(-0.032, neuralNetwork.getLayers().get(1).getNeurons().get(2).errorValue, DELTA_2);
+        assertEquals(-0.088, neuralNetwork.getLayers().get(1).getNeurons().get(0).errorValue, DELTA);
+        assertEquals(-0.045, neuralNetwork.getLayers().get(1).getNeurons().get(1).errorValue, DELTA);
+        assertEquals(-0.032, neuralNetwork.getLayers().get(1).getNeurons().get(2).errorValue, DELTA);
     }
 
     @Test
@@ -114,9 +112,9 @@ class NeuralNetworkTest {
         BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
         backPropagation.learn();
 
-        assertEquals(0.116, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(0).weight, DELTA_2);
-        assertEquals(0.329, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(1).weight, DELTA_2);
-        assertEquals(0.708, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(2).weight, DELTA_2);
+        assertEquals(0.116, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(0).weight, DELTA);
+        assertEquals(0.329, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(1).weight, DELTA);
+        assertEquals(0.708, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(2).weight, DELTA);
     }
 
     @Test
@@ -125,13 +123,13 @@ class NeuralNetworkTest {
         BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
         backPropagation.learn();
 
-        assertEquals(0.712, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(0).weight, DELTA_2);
-        assertEquals(0.355, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(1).weight, DELTA_2);
-        assertEquals(0.268, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(2).weight, DELTA_2);
+        assertEquals(0.712, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(0).weight, DELTA);
+        assertEquals(0.355, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(1).weight, DELTA);
+        assertEquals(0.268, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(2).weight, DELTA);
 
-        assertEquals(0.112, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(0).weight, DELTA_2);
-        assertEquals(0.855, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(1).weight, DELTA_2);
-        assertEquals(0.468, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(2).weight, DELTA_2);
+        assertEquals(0.112, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(0).weight, DELTA);
+        assertEquals(0.855, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(1).weight, DELTA);
+        assertEquals(0.468, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(2).weight, DELTA);
     }
 
     @Test
@@ -141,9 +139,9 @@ class NeuralNetworkTest {
         backPropagation.learn();
         neuralNetwork.fireOutput();
 
-        assertEquals(0.69, neuralNetwork.getLayers().get(1).getNeurons().get(0).value, DELTA_2);
-        assertEquals(0.77, neuralNetwork.getLayers().get(1).getNeurons().get(1).value, DELTA_2);
-        assertEquals(0.68, neuralNetwork.getLayers().get(1).getNeurons().get(2).value, DELTA_2);
+        assertEquals(0.69, neuralNetwork.getLayers().get(1).getNeurons().get(0).value, DELTA);
+        assertEquals(0.77, neuralNetwork.getLayers().get(1).getNeurons().get(1).value, DELTA);
+        assertEquals(0.68, neuralNetwork.getLayers().get(1).getNeurons().get(2).value, DELTA);
     }
 
     @Test
@@ -153,7 +151,7 @@ class NeuralNetworkTest {
         backPropagation.learn();
         neuralNetwork.fireOutput();
 
-        assertEquals(0.69, neuralNetwork.getOutputLayer().getNeurons().get(0).value, DELTA_2);
+        assertEquals(0.69, neuralNetwork.getOutputLayer().getNeurons().get(0).value, DELTA);
     }
 
     private void modifyNeuralNetworkForXORTutorialExample(NeuralNetwork neuralNetwork) {
@@ -191,6 +189,7 @@ class NeuralNetworkTest {
         neuralNetwork.getLayers().add(outputLayer);
         neuralNetwork.setActivationFunctions(new Sigmoid());
         neuralNetwork.connectLayersInOrder();
+        neuralNetwork.initialize();
 
         modifyNeuralNetworkForXORTutorialExample(neuralNetwork);
 

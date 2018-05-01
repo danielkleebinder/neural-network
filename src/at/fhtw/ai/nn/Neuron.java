@@ -220,7 +220,6 @@ public class Neuron implements Serializable {
      */
     public double fire(boolean parallel) {
         int dataSize = inputSynapses.size();
-
         if (fired || dataSize <= 0) {
             return value;
         }
@@ -243,6 +242,35 @@ public class Neuron implements Serializable {
         // Return the final result
         // This is incredibly important for multithreading
         value = currentValue.value;
+        return value;
+    }
+
+    /**
+     * Fires the neuron in the reverse direction.
+     *
+     * @return Neuron input.
+     */
+    public double fireReverse() {
+        if (fired) {
+            return value;
+        }
+
+        int dataSize = outputSynapses.size();
+        if (dataSize <= 0) {
+            //value = activationFunction.activate(value);
+            //value += bias.compute();
+            fired = true;
+            return value;
+        }
+
+        value = 0.0;
+        for (Synapse synapse : outputSynapses) {
+            value += synapse.destinationNeuron.fireReverse() * synapse.weight;
+        }
+        //value = activationFunction.activate(value);
+        //value += bias.compute();
+
+        fired = true;
         return value;
     }
 }

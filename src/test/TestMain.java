@@ -21,7 +21,7 @@ public class TestMain {
         System.out.println("Loading Neural Network...");
         NeuralNetwork neuralNetwork = null;
         try {
-            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E5_C0.dat");
+            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/_NeuralNetwork_E10_93_80.dat");
             //neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/_NeuralNetwork_E10_93_80.dat");
         } catch (IOException e) {
             e.printStackTrace();
