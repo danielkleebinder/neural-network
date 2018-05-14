@@ -7,8 +7,6 @@ import at.fhtw.ai.nn.initialize.RandomInitializer;
 import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class ReverseNeuralNetworkTest {
     private static final Double DELTA = 0.0001;
 

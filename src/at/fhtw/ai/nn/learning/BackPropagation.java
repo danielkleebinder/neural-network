@@ -55,10 +55,10 @@ public class BackPropagation extends LearningAlgorithm {
             for (Neuron neuron : currentLayer.getNeurons()) {
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
                     l2 = learningRate * lambda * outputSynapse.weight;
-                    dw = learningRate * (outputSynapse.destinationNeuron.errorValue * neuron.value);
+                    dw = learningRate * ((outputSynapse.destinationNeuron.errorValue + l2) * neuron.value);
                     dm = momentum * outputSynapse.change;
 
-                    outputSynapse.weight += (dw + dm + l2);
+                    outputSynapse.weight += (dw + dm);
                     outputSynapse.change = dw;
                 }
                 Bias bias = neuron.getBias();
@@ -68,11 +68,9 @@ public class BackPropagation extends LearningAlgorithm {
     }
 
     private void resetNetwork() {
-        for (Neuron neuron : neuralNetwork.getInputLayer().getNeurons()) {
-            neuron.errorValue = 0.0;
-        }
         for (Layer layer : neuralNetwork.getLayers()) {
             for (Neuron neuron : layer.getNeurons()) {
+                neuron.errorValue = 0.0;
                 for (Synapse synapse : neuron.getInputSynapses()) {
                     synapse.change = 0.0;
                 }

@@ -37,6 +37,10 @@ public class Neuron implements Serializable {
     public Bias bias = new Bias();
 
     /**
+     * Pre activation function value.
+     */
+    public double preActivationValue = Double.NaN;
+    /**
      * Latest computed value.
      */
     public double value = Double.NaN;
@@ -235,6 +239,8 @@ public class Neuron implements Serializable {
             }
         }
         currentValue.value += bias.compute();
+
+        preActivationValue = currentValue.value;
         currentValue.value = activationFunction.activate(currentValue.value);
 
         fired = true;
@@ -258,7 +264,7 @@ public class Neuron implements Serializable {
         int dataSize = outputSynapses.size();
         if (dataSize <= 0) {
             //value = activationFunction.activate(value);
-            //value += bias.compute();
+            //value -= bias.compute();
             fired = true;
             return value;
         }
@@ -268,7 +274,7 @@ public class Neuron implements Serializable {
             value += synapse.destinationNeuron.fireReverse() * synapse.weight;
         }
         //value = activationFunction.activate(value);
-        //value += bias.compute();
+        //value -= bias.compute();
 
         fired = true;
         return value;

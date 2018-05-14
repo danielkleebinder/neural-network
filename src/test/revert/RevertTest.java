@@ -4,8 +4,8 @@ import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.activation.ActivationFunction;
+import at.fhtw.ai.nn.activation.Identity;
 import at.fhtw.ai.nn.activation.Logit;
-import at.fhtw.ai.nn.activation.Sigmoid;
 import at.fhtw.ai.nn.utils.Utils;
 
 import javax.imageio.ImageIO;
@@ -24,12 +24,11 @@ import java.util.Arrays;
 public class RevertTest {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("Loading Neural Network...");
-        NeuralNetwork neuralNetwork = Utils.deserialize("../NeuralNetwork_E10_93_80.dat");
+        NeuralNetwork neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
+        //NeuralNetwork neuralNetwork = Utils.deserialize("C:\\Users\\Daniel\\Desktop\\pl3\\NeuralNetwork_E14_C0.dat");
 
         System.out.println("Reversing Neural Network...");
-        for (Layer layer : neuralNetwork.getLayers()) {
-            layer.setActivationFunctions(new Logit());
-        }
+        neuralNetwork.setActivationFunctions(new Logit());
 
         double[] inputs = new double[10];
         Arrays.fill(inputs, 0.0);
@@ -47,7 +46,7 @@ public class RevertTest {
                 imageData[j] = neuralNetwork.getInputLayer().getNeurons().get(j).value;
             }
             MnistImage image = new MnistImage(imageData);
-            image.save("C:\\Users\\Daniel\\Desktop\\pl3\\reverse\\number_" + i + ".png");
+            image.save("../RGI (Vanilla) 2/number_" + i + ".png");
         }
     }
 
@@ -76,14 +75,15 @@ public class RevertTest {
             BufferedImage image = new BufferedImage(28, 28, BufferedImage.TYPE_INT_RGB);
             double min = 1.0;
             double max = 0.0;
-            ActivationFunction activationFunction = new Sigmoid();
+            ActivationFunction activationFunction = new Identity();
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     double pixel = pixels[y * width + x];
-                    pixel = (activationFunction.activate(pixel) - 0.25) * 300.0;
 
                     min = Math.min(min, pixel);
                     max = Math.max(max, pixel);
+
+                    pixel = activationFunction.activate(pixel) * 255.0;
 
                     pixel = Math.max(pixel, 0.0);
                     pixel = Math.min(pixel, 255.0);

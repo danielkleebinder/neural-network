@@ -2,13 +2,15 @@ package test.learning;
 
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Sigmoid;
+import at.fhtw.ai.nn.activation.rectifier.Rectifier;
 import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
 import at.fhtw.ai.nn.utils.BackPropagationBuilder;
 import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 import at.fhtw.ai.nn.utils.Utils;
-import test.loader.DigitImage;
-import test.loader.DigitImageLoadingService;
+import test.loader.GrayImage;
+import test.loader.MNISTImageLoadingService;
+import test.loader.MnistImage;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -24,11 +26,6 @@ import java.util.List;
  */
 public class MnistMain {
     public static void main(String[] args) {
-        // Configurations:
-        // -- 93.80% --
-        // Lr: 0.2
-        // M: 0.9
-        // E: 0.005
         double learningRate = 0.2;
         double momentum = 0.9;
         double meanNetworkError = 0.0005;
@@ -45,9 +42,10 @@ public class MnistMain {
         System.out.println("Setting up Neural Network...");
         NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
                 .layer("Input Layer", numberOfInputNeurons)
-                .layer("Hidden layer", numberOfHiddenNeurons)
+                .layer("Hidden layer (ReLU)", numberOfHiddenNeurons, new Rectifier())
+                .layer("Hidden layer (Sigmoid)", numberOfHiddenNeurons, new Sigmoid())
                 .layer("Output Layer", numberOfOutputNeurons)
-                .activationFunction(new Sigmoid())
+                //.activationFunction(new Sigmoid())
                 .initializer(new XavierInitializer())
                 .build();
 
@@ -58,14 +56,14 @@ public class MnistMain {
                 .build();
 
         System.out.println("Loading Train Images...");
-        DigitImageLoadingService dilsTrainData = new DigitImageLoadingService(
+        MNISTImageLoadingService dilsTrainData = new MNISTImageLoadingService(
                 "C:/Users/Daniel/Desktop/train/train-labels-idx1-ubyte.dat",
                 "C:/Users/Daniel/Desktop/train/train-images-idx3-ubyte.dat"
         );
 
-        List<DigitImage> trainImages = null;
+        List<MnistImage> trainImages = null;
         try {
-            trainImages = dilsTrainData.loadDigitImages();
+            trainImages = dilsTrainData.loadMNISTImages(new GrayImage.Factory());
             Collections.shuffle(trainImages);
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,15 +81,15 @@ public class MnistMain {
         double averageNetworkError;
         do {
             Collections.shuffle(trainImages);
-            for (DigitImage digitImage : trainImages) {
+            for (MnistImage mnistImage : trainImages) {
                 // Set neural network input parameters
-                neuralNetwork.input(digitImage.getData());
+                neuralNetwork.input(mnistImage.getData());
 
                 // Set desired output values
                 for (int i = 0; i < backPropagation.getDesiredOutputValues().size(); i++) {
                     backPropagation.getDesiredOutputValues().set(i, 0.0);
                 }
-                backPropagation.getDesiredOutputValues().set(digitImage.getLabel(), 1.0);
+                backPropagation.getDesiredOutputValues().set(mnistImage.getLabel(), 1.0);
 
                 // Learn the network
                 backPropagation.learn();
