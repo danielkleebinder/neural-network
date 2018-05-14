@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation.rectifier;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * Exponential rectifier activation function.<br>
  * <code>f(x) = a*(e^x-1) for x < 0</code><br>
@@ -33,12 +35,13 @@ public class ExponentialRectifier extends ParametricRectifier {
     }
 
     @Override
-    public double activate(double x) {
-        return x < 0 ? (leakiness * (Math.exp(x) - 1)) : x;
+    public double activate(Neuron neuron) {
+        double x = neuron.preActivationValue;
+        return x < 0 ? (leakiness * (Math.exp(x) - 1.0)) : x;
     }
 
     @Override
-    public double derivative(double x) {
-        return x < 0 ? (x + leakiness) : 1.0;
+    public double derivative(Neuron neuron) {
+        return neuron.preActivationValue < 0 ? (neuron.value + leakiness) : 1.0;
     }
 }

@@ -53,6 +53,7 @@ public class Neuron implements Serializable {
      * If the neuron has fired yet.
      */
     private boolean fired = false;
+    private boolean preComputed = false;
 
 
     /**
@@ -204,6 +205,7 @@ public class Neuron implements Serializable {
      */
     public void setFired(boolean fired) {
         this.fired = fired;
+        this.preComputed = fired;
     }
 
     /**
@@ -228,27 +230,42 @@ public class Neuron implements Serializable {
             return value;
         }
 
+        preCompute(parallel);
+        double result = activationFunction.activate(this);
+
+
+        // Return the final result
+        // This is incredibly important for multithreading
+        value = result;
+        fired = true;
+        return value;
+    }
+
+    /**
+     * Pre-computes the neurons value.
+     *
+     * @param parallel True if the firing should be done in multiple threads.
+     * @return Pre-activation output of the neuron.
+     */
+    public double preCompute(boolean parallel) {
+        if (preComputed) {
+            return preActivationValue;
+        }
+
         final AtomicDouble currentValue = new AtomicDouble(0.0);
         if (parallel) {
             inputSynapses
                     .parallelStream()
                     .forEach(synapse -> currentValue.value += synapse.computeOutput());
         } else {
-            for (int i = 0; i < dataSize; i++) {
+            for (int i = 0; i < inputSynapses.size(); i++) {
                 currentValue.value += inputSynapses.get(i).computeOutput();
             }
         }
         currentValue.value += bias.compute();
-
         preActivationValue = currentValue.value;
-        currentValue.value = activationFunction.activate(currentValue.value);
-
-        fired = true;
-
-        // Return the final result
-        // This is incredibly important for multithreading
-        value = currentValue.value;
-        return value;
+        preComputed = true;
+        return preActivationValue;
     }
 
     /**
@@ -263,6 +280,7 @@ public class Neuron implements Serializable {
 
         int dataSize = outputSynapses.size();
         if (dataSize <= 0) {
+            preActivationValue = value;
             //value = activationFunction.activate(value);
             //value -= bias.compute();
             fired = true;
@@ -273,10 +291,59 @@ public class Neuron implements Serializable {
         for (Synapse synapse : outputSynapses) {
             value += synapse.destinationNeuron.fireReverse() * synapse.weight;
         }
+        preActivationValue = value;
         //value = activationFunction.activate(value);
         //value -= bias.compute();
 
         fired = true;
         return value;
+    }
+
+    /**
+     * A very simple neuron which is not able to be activated.
+     * <p>
+     * Created On: 14.05.2018
+     *
+     * @author Daniel Kleebinder
+     * @since 0.0.1
+     */
+    public static class SimpleNeuron extends Neuron {
+
+        /**
+         * Creates a new simple neuron.
+         */
+        public SimpleNeuron() {
+            this(0.0);
+        }
+
+        /**
+         * Creates a new simple neuron with the given value.
+         *
+         * @param value Value.
+         */
+        public SimpleNeuron(double value) {
+            this(value, value);
+        }
+
+        /**
+         * Creates a new simple neuron.
+         *
+         * @param value              Value.
+         * @param preActivationValue Pre activation value.
+         */
+        public SimpleNeuron(double value, double preActivationValue) {
+            this.value = value;
+            this.preActivationValue = preActivationValue;
+        }
+
+        @Override
+        public double fire(boolean parallel) {
+            throw new UnsupportedOperationException("Simple neurons do not support firing");
+        }
+
+        @Override
+        public double fireReverse() {
+            throw new UnsupportedOperationException("Simple neurons do not support reverse firing");
+        }
     }
 }

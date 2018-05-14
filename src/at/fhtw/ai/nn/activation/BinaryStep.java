@@ -1,7 +1,9 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
- * Simple, step clamp function.<br>
+ * Simple, (binary) step function.<br>
  * <code>f(x) = 0 for x <= 0</code><br>
  * <code>f(x) = 1 for x > 0</code><br><br>
  * Derivative:<br>
@@ -13,17 +15,17 @@ package at.fhtw.ai.nn.activation;
  * @author Daniel Kleebinder
  * @since 0.0.1
  */
-public class Step implements ActivationFunction {
+public class BinaryStep implements ActivationFunction {
     private static final long serialVersionUID = -3516386212264246948L;
 
     @Override
-    public double activate(double x) {
-        return x <= 0.0 ? 0.0 : 1.0;
+    public double activate(Neuron neuron) {
+        return neuron.preActivationValue < 0.0 ? 0.0 : 1.0;
     }
 
     @Override
-    public double derivative(double x) {
-        if (x == 0) {
+    public double derivative(Neuron neuron) {
+        if (Double.compare(neuron.preActivationValue, 0.0) == 0) {
             throw new ArithmeticException("Unknown derivative for x = 0");
         }
         return 0;

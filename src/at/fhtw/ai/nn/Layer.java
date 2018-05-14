@@ -1,6 +1,9 @@
 package at.fhtw.ai.nn;
 
 import at.fhtw.ai.nn.activation.ActivationFunction;
+import at.fhtw.ai.nn.activation.layer.LayerActivationFunction;
+import at.fhtw.ai.nn.connect.Connector;
+import at.fhtw.ai.nn.connect.DenseConnector;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,6 +26,16 @@ public class Layer implements Serializable {
     private String name;
 
     /**
+     * Layer connection algorithm.
+     */
+    private Connector connector = new DenseConnector();
+
+    /**
+     * Layer activation function.
+     */
+    private LayerActivationFunction layerActivationFunction;
+
+    /**
      * Contains all neurons of the layer.
      */
     private List<Neuron> neurons = new ArrayList<>(16);
@@ -43,6 +56,24 @@ public class Layer implements Serializable {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Sets the layer connection algorithm.
+     *
+     * @param connector Connector.
+     */
+    public void setConnector(Connector connector) {
+        this.connector = connector;
+    }
+
+    /**
+     * Returns the layer connection algorithm.
+     *
+     * @return Connector.
+     */
+    public Connector getConnector() {
+        return connector;
     }
 
     /**
@@ -69,7 +100,19 @@ public class Layer implements Serializable {
      * @param activationFunction Activation function.
      */
     public void setActivationFunctions(ActivationFunction activationFunction) {
+        if (activationFunction instanceof LayerActivationFunction) {
+            layerActivationFunction = (LayerActivationFunction) activationFunction;
+        }
         neurons.forEach(neuron -> neuron.setActivationFunction(activationFunction));
+    }
+
+    /**
+     * Returns the layer based activation function if one is used.
+     *
+     * @return Layer based activation function.
+     */
+    public LayerActivationFunction getLayerActivationFunction() {
+        return layerActivationFunction;
     }
 
     /**
@@ -78,9 +121,7 @@ public class Layer implements Serializable {
      * @param inputLayer Input layer.
      */
     public void connectInput(Layer inputLayer) {
-        inputLayer.getNeurons().forEach(neuron -> {
-            neurons.forEach(current -> current.connectInput(neuron));
-        });
+        connector.connect(inputLayer, this);
     }
 
     /**
@@ -96,6 +137,10 @@ public class Layer implements Serializable {
      * Fires all neurons at once.
      */
     public void fire() {
+        neurons.forEach(neuron -> neuron.preCompute(false));
+        if (layerActivationFunction != null) {
+            layerActivationFunction.initialize(this);
+        }
         neurons.forEach(neuron -> neuron.fire(false));
     }
 
@@ -103,6 +148,10 @@ public class Layer implements Serializable {
      * Fires all neurons in parallel.
      */
     public void fireParallel() {
+        neurons.parallelStream().forEach(neuron -> neuron.preCompute(false));
+        if (layerActivationFunction != null) {
+            layerActivationFunction.initialize(this);
+        }
         neurons.parallelStream().forEach(neuron -> neuron.fire(false));
     }
 

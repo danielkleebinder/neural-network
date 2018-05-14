@@ -1,6 +1,7 @@
 package at.fhtw.ai.nn;
 
 import at.fhtw.ai.nn.activation.ActivationFunction;
+import at.fhtw.ai.nn.connect.Connector;
 import at.fhtw.ai.nn.initialize.Initializer;
 import at.fhtw.ai.nn.initialize.RandomInitializer;
 
@@ -33,6 +34,11 @@ public class NeuralNetwork implements Serializable {
      * Activation function.
      */
     private ActivationFunction activationFunction;
+
+    /**
+     * Layer connection algorithm.
+     */
+    private Connector connector;
 
 
     /**
@@ -88,11 +94,24 @@ public class NeuralNetwork implements Serializable {
     }
 
     /**
+     * Sets the layer connection algorithm for all layers.
+     *
+     * @param connector Connector.
+     */
+    public void setConnectors(Connector connector) {
+        this.connector = connector;
+    }
+
+    /**
      * Connects all layers in a standard order.
      */
     public void connectLayersInOrder() {
         if (layers.size() <= 1) {
             return;
+        }
+
+        if (connector != null) {
+            layers.forEach(layer -> layer.setConnector(connector));
         }
 
         Layer previousLayer = layers.get(0);

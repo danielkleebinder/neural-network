@@ -2,9 +2,13 @@ package test.learning;
 
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Sigmoid;
-import at.fhtw.ai.nn.activation.rectifier.Rectifier;
+import at.fhtw.ai.nn.activation.layer.Softmax;
+import at.fhtw.ai.nn.activation.rectifier.ExponentialRectifier;
+import at.fhtw.ai.nn.connect.DenseConnector;
 import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
+import at.fhtw.ai.nn.loss.CrossEntropy;
+import at.fhtw.ai.nn.regularization.L2;
 import at.fhtw.ai.nn.utils.BackPropagationBuilder;
 import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 import at.fhtw.ai.nn.utils.Utils;
@@ -41,15 +45,16 @@ public class MnistMain {
 
         System.out.println("Setting up Neural Network...");
         NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
-                .layer("Input Layer", numberOfInputNeurons)
-                .layer("Hidden layer (ReLU)", numberOfHiddenNeurons, new Rectifier())
-                .layer("Hidden layer (Sigmoid)", numberOfHiddenNeurons, new Sigmoid())
-                .layer("Output Layer", numberOfOutputNeurons)
-                //.activationFunction(new Sigmoid())
+                .layer("Input Layer", numberOfInputNeurons, new ExponentialRectifier())
+                .layer("Hidden layer", numberOfHiddenNeurons, new Sigmoid())
+                .layer("Output Layer", numberOfOutputNeurons, new Softmax())
+                .connector(new DenseConnector())
                 .initializer(new XavierInitializer())
                 .build();
 
         BackPropagation backPropagation = new BackPropagationBuilder()
+                .regularization(new L2())
+                .lossFunction(new CrossEntropy())
                 .learningRate(learningRate)
                 .momentum(momentum)
                 .neuralNetwork(neuralNetwork)
@@ -97,6 +102,15 @@ public class MnistMain {
                 // Update epoch counters
                 epochError += backPropagation.networkError();
                 epochIterations++;
+/*
+                double sum=0.0;
+                System.out.println();
+                System.out.println("Output:");
+                for(Neuron neuron:neuralNetwork.getOutputLayer().getNeurons()) {
+                    sum+=neuron.value;
+                    System.out.println("   -> " + neuron.value);
+                }
+                System.out.println("   -> Sum: " + sum);*/
             }
 
             // Calculate average network error

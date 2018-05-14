@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * Most common used sigmoid function for activation.<br>
  * <code>f(x) = 1 / (1 + e^-x)</code><br><br>
@@ -15,12 +17,17 @@ public class Sigmoid implements ActivationFunction {
     private static final long serialVersionUID = 1613503183509679914L;
 
     @Override
-    public double activate(double x) {
-        return 1.0 / (1.0 + Math.exp(-x));
+    public double activate(Neuron neuron) {
+        return 1.0 / (1.0 + Math.exp(-neuron.preActivationValue));
     }
 
     @Override
-    public double derivative(double x) {
-        return x * (1.0 - x);
+    public double derivative(Neuron neuron) {
+        return neuron.value * (1.0 - neuron.value);
+    }
+
+    @Override
+    public boolean isStochasticDerivative() {
+        return true;
     }
 }

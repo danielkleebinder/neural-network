@@ -3,6 +3,7 @@ package at.fhtw.ai.nn.utils;
 import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.ActivationFunction;
+import at.fhtw.ai.nn.connect.Connector;
 import at.fhtw.ai.nn.initialize.Initializer;
 import javafx.util.Builder;
 
@@ -59,7 +60,7 @@ public class NeuralNetworkBuilder implements Builder<NeuralNetwork> {
      * @return A neural network layer builder.
      */
     public NeuralNetworkBuilder layer(String name, int neurons) {
-        return layer(name, neurons, null);
+        return layer(name, neurons, (ActivationFunction) null);
     }
 
     /**
@@ -71,8 +72,38 @@ public class NeuralNetworkBuilder implements Builder<NeuralNetwork> {
      * @return A neural network layer builder.
      */
     public NeuralNetworkBuilder layer(String name, int neurons, ActivationFunction activationFunction) {
+        return layer(name, neurons, activationFunction, null);
+    }
+
+    /**
+     * Adds a new layer with the given name, number of neurons and connector to the network.
+     *
+     * @param name      Layer name.
+     * @param neurons   Number of neurons for this layer.
+     * @param connector Connector.
+     * @return A neural network layer builder.
+     */
+    public NeuralNetworkBuilder layer(String name, int neurons, Connector connector) {
+        return layer(name, neurons, null, connector);
+    }
+
+    /**
+     * Adds a new layer with the given name, number of neurons, activation function and connector to the network.
+     *
+     * @param name               Layer name.
+     * @param neurons            Number of neurons for this layer.
+     * @param activationFunction Activation function.
+     * @param connector          Connector.
+     * @return A neural network layer builder.
+     */
+    public NeuralNetworkBuilder layer(String name, int neurons, ActivationFunction activationFunction, Connector connector) {
         Layer layer = Utils.createLayer(name, neurons);
-        layer.setActivationFunctions(activationFunction);
+        if (activationFunction != null) {
+            layer.setActivationFunctions(activationFunction);
+        }
+        if (connector != null) {
+            layer.setConnector(connector);
+        }
         neuralNetwork.getLayers().add(layer);
         return this;
     }
@@ -191,13 +222,25 @@ public class NeuralNetworkBuilder implements Builder<NeuralNetwork> {
     }
 
     /**
-     * Sets the activation function of the neural network.
+     * Sets the activation function of the neural network. This method call will overwrite all activation functions in
+     * all neurons and layers of this network.
      *
      * @param activationFunction Activation function.
      * @return This neural network builder.
      */
     public NeuralNetworkBuilder activationFunction(ActivationFunction activationFunction) {
         neuralNetwork.setActivationFunctions(activationFunction);
+        return this;
+    }
+
+    /**
+     * Sets the connector for the neural network.
+     *
+     * @param connector Connector.
+     * @return This neural network builder.
+     */
+    public NeuralNetworkBuilder connector(Connector connector) {
+        neuralNetwork.setConnectors(connector);
         return this;
     }
 

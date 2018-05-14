@@ -1,5 +1,6 @@
 package at.fhtw.ai.nn.activation.rectifier;
 
+import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.activation.ActivationFunction;
 
 /**
@@ -23,12 +24,13 @@ public class Rectifier implements ActivationFunction {
     protected double leakiness = 0.0;
 
     @Override
-    public double activate(double x) {
+    public double activate(Neuron neuron) {
+        double x = neuron.preActivationValue;
         return x < 0 ? (leakiness * x) : x;
     }
 
     @Override
-    public double derivative(double x) {
-        return x < 0 ? leakiness : 1.0;
+    public double derivative(Neuron neuron) {
+        return neuron.preActivationValue < 0 ? leakiness : 1.0;
     }
 }

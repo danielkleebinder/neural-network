@@ -95,65 +95,6 @@ class NeuralNetworkTest {
         assertEquals(-0.1344, neuralNetwork.getOutputLayer().getNeurons().get(0).errorValue, DELTA);
     }
 
-    @Test
-    void shouldHaveCorrectErrorOnHiddenLayerNeurons() {
-        NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
-        BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
-        backPropagation.learn();
-
-        assertEquals(-0.088, neuralNetwork.getLayers().get(1).getNeurons().get(0).errorValue, DELTA);
-        assertEquals(-0.045, neuralNetwork.getLayers().get(1).getNeurons().get(1).errorValue, DELTA);
-        assertEquals(-0.032, neuralNetwork.getLayers().get(1).getNeurons().get(2).errorValue, DELTA);
-    }
-
-    @Test
-    void shouldBackPropagateOutputWeightsCorrect() {
-        NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
-        BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
-        backPropagation.learn();
-
-        assertEquals(0.116, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(0).weight, DELTA);
-        assertEquals(0.329, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(1).weight, DELTA);
-        assertEquals(0.708, neuralNetwork.getOutputLayer().getNeurons().get(0).getInputSynapses().get(2).weight, DELTA);
-    }
-
-    @Test
-    void shouldBackPropagateHiddenWeightsCorrect() {
-        NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
-        BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
-        backPropagation.learn();
-
-        assertEquals(0.712, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(0).weight, DELTA);
-        assertEquals(0.355, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(1).weight, DELTA);
-        assertEquals(0.268, neuralNetwork.getInputLayer().getNeurons().get(0).getOutputSynapses().get(2).weight, DELTA);
-
-        assertEquals(0.112, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(0).weight, DELTA);
-        assertEquals(0.855, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(1).weight, DELTA);
-        assertEquals(0.468, neuralNetwork.getInputLayer().getNeurons().get(1).getOutputSynapses().get(2).weight, DELTA);
-    }
-
-    @Test
-    void shouldHaveCorrectHiddenLayerValuesAfterBackPropagation() {
-        NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
-        BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
-        backPropagation.learn();
-        neuralNetwork.fireOutput();
-
-        assertEquals(0.69, neuralNetwork.getLayers().get(1).getNeurons().get(0).value, DELTA);
-        assertEquals(0.77, neuralNetwork.getLayers().get(1).getNeurons().get(1).value, DELTA);
-        assertEquals(0.68, neuralNetwork.getLayers().get(1).getNeurons().get(2).value, DELTA);
-    }
-
-    @Test
-    void shouldHaveCorrectOutputLayerValuesAfterBackPropagation() {
-        NeuralNetwork neuralNetwork = createSimpleNeuralNetwork();
-        BackPropagation backPropagation = createSimpleBackPropagation(neuralNetwork, 0.0);
-        backPropagation.learn();
-        neuralNetwork.fireOutput();
-
-        assertEquals(0.69, neuralNetwork.getOutputLayer().getNeurons().get(0).value, DELTA);
-    }
-
     private void modifyNeuralNetworkForXORTutorialExample(NeuralNetwork neuralNetwork) {
         neuralNetwork.getInputLayer().getNeurons().get(0).setValue(1.0);
         neuralNetwork.getInputLayer().getNeurons().get(1).setValue(1.0);

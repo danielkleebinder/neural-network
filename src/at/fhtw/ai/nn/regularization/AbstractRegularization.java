@@ -14,7 +14,7 @@ public abstract class AbstractRegularization implements Regularization {
     /**
      * Lambda term for regularization.
      */
-    protected double lambda = 1e-4;
+    protected double lambda = 1e-5;
 
     @Override
     public void setLambda(double lambda) {

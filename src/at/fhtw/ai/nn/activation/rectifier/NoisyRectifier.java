@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation.rectifier;
 
+import at.fhtw.ai.nn.Neuron;
+
 import java.util.Random;
 
 /**
@@ -22,7 +24,8 @@ public class NoisyRectifier extends Rectifier {
     private Random rnd = new Random();
 
     @Override
-    public double activate(double x) {
-        return super.activate(x + rnd.nextGaussian());
+    public double activate(Neuron neuron) {
+        double x = neuron.preActivationValue + rnd.nextGaussian();
+        return x < 0 ? (leakiness * x) : x;
     }
 }

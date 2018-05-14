@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * Frequently used hyperbolic tangent (tanh) activation function.<br>
  * <code>f(x) = tanh(x)</code><br><br>
@@ -15,12 +17,12 @@ public class HyperbolicTangent implements ActivationFunction {
     private static final long serialVersionUID = -8549945472858871417L;
 
     @Override
-    public double activate(double x) {
-        return Math.tanh(x);
+    public double activate(Neuron neuron) {
+        return Math.tanh(neuron.preActivationValue);
     }
 
     @Override
-    public double derivative(double x) {
-        return 1.0 - (x * x);
+    public double derivative(Neuron neuron) {
+        return 1.0 - (neuron.value * neuron.value);
     }
 }

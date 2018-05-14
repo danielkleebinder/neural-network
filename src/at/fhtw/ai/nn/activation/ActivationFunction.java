@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 import java.io.Serializable;
 
 /**
@@ -13,18 +15,49 @@ import java.io.Serializable;
 public interface ActivationFunction extends Serializable {
 
     /**
-     * Activation method for neural networks.
+     * Activates the given value.
      *
-     * @param x Value.
+     * @param value Value.
      * @return Activated value.
      */
-    double activate(double x);
+    default double activate(double value) {
+        return activate(new Neuron.SimpleNeuron(value));
+    }
+
+    /**
+     * Activation method for neural networks.
+     *
+     * @param neuron Neuron.
+     * @return Activated value.
+     */
+    double activate(Neuron neuron);
 
     /**
      * Derivative of the activation function.
      *
-     * @param x Value.
+     * @param value Value.
      * @return Result.
      */
-    double derivative(double x);
+    default double derivative(double value) {
+        return derivative(new Neuron.SimpleNeuron(value));
+    }
+
+    /**
+     * Derivative of the activation function.
+     *
+     * @param neuron Neuron.
+     * @return Result.
+     */
+    double derivative(Neuron neuron);
+
+    /**
+     * An activation function with a derivative of:<br>
+     * <code>f'(x) = f(x) * (1 - f(x))</code>
+     * will return true.
+     *
+     * @return Result.
+     */
+    default boolean isStochasticDerivative() {
+        return false;
+    }
 }

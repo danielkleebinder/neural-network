@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * Simple, standard identity activation function. The input equals the output.<br>
  * <code>f(x) = x</code><br><br>
@@ -15,12 +17,12 @@ public class Identity implements ActivationFunction {
     private static final long serialVersionUID = -6905753012349704117L;
 
     @Override
-    public double activate(double x) {
-        return x;
+    public double activate(Neuron neuron) {
+        return neuron.preActivationValue;
     }
 
     @Override
-    public double derivative(double x) {
+    public double derivative(Neuron neuron) {
         return 1;
     }
 }

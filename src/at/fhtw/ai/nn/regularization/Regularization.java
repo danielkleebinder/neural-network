@@ -1,6 +1,6 @@
 package at.fhtw.ai.nn.regularization;
 
-import at.fhtw.ai.nn.NeuralNetwork;
+import at.fhtw.ai.nn.Synapse;
 
 import java.io.Serializable;
 
@@ -17,10 +17,10 @@ public interface Regularization extends Serializable {
     /**
      * Computes the delta update for the regularization of neural network weights.
      *
-     * @param neuralNetwork Neural network.
+     * @param synapse Synapse.
      * @return Regularization term.
      */
-    double compute(NeuralNetwork neuralNetwork);
+    double compute(Synapse synapse);
 
     /**
      * Sets the lambda term for the regularization method.

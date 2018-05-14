@@ -2,6 +2,8 @@ package at.fhtw.ai.nn.utils;
 
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.learning.BackPropagation;
+import at.fhtw.ai.nn.loss.LossFunction;
+import at.fhtw.ai.nn.regularization.Regularization;
 import javafx.util.Builder;
 
 /**
@@ -45,6 +47,29 @@ public class BackPropagationBuilder implements Builder<BackPropagation> {
      */
     public BackPropagationBuilder momentum(double momentum) {
         backPropagation.setMomentum(momentum);
+        return this;
+    }
+
+    /**
+     * Sets the regularization algorithm of the back propagation algorithm. If the algorithm is set to null, no
+     * regularization will be applied.
+     *
+     * @param regularization Regularization algorithm.
+     * @return This back propagation builder.
+     */
+    public BackPropagationBuilder regularization(Regularization regularization) {
+        backPropagation.setRegularization(regularization);
+        return this;
+    }
+
+    /**
+     * Sets the loss function of the back propagation algorithm.
+     *
+     * @param lossFunction Loss function.
+     * @return This back propagation builder.
+     */
+    public BackPropagationBuilder lossFunction(LossFunction lossFunction) {
+        backPropagation.setLossFunction(lossFunction);
         return this;
     }
 

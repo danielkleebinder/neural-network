@@ -4,6 +4,10 @@ import at.fhtw.ai.nn.Bias;
 import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.Synapse;
+import at.fhtw.ai.nn.loss.LossFunction;
+import at.fhtw.ai.nn.loss.Quadratic;
+import at.fhtw.ai.nn.regularization.L2;
+import at.fhtw.ai.nn.regularization.Regularization;
 
 /**
  * Created On: 24.04.2018
@@ -17,7 +21,9 @@ public class BackPropagation extends LearningAlgorithm {
     private double momentum = 0.9;
     private double learningRate = 0.2;
     private double meanSquareError = 0.05;
-    private double lambda = 1e-5;
+
+    private Regularization regularization = new L2();
+    private LossFunction lossFunction = new Quadratic();
 
     private void computeOutputLayerErrors() {
         Layer outputLayer = neuralNetwork.getOutputLayer();
@@ -43,19 +49,19 @@ public class BackPropagation extends LearningAlgorithm {
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
                     sum += outputSynapse.destinationNeuron.errorValue * outputSynapse.weight;
                 }
-                neuron.errorValue = sum * neuron.getActivationFunction().derivative(neuron.value);
+                neuron.errorValue = sum * neuron.getActivationFunction().derivative(neuron);
             }
         }
     }
 
     private void adjustLayerWeights() {
-        double l2, dw, dm;
+        double re, dw, dm;
         for (int i = neuralNetwork.getLayers().size() - 1; i >= 0; i--) {
             Layer currentLayer = neuralNetwork.getLayers().get(i);
             for (Neuron neuron : currentLayer.getNeurons()) {
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
-                    l2 = learningRate * lambda * outputSynapse.weight;
-                    dw = learningRate * ((outputSynapse.destinationNeuron.errorValue + l2) * neuron.value);
+                    re = learningRate * (regularization == null ? 0.0 : regularization.compute(outputSynapse));
+                    dw = learningRate * ((outputSynapse.destinationNeuron.errorValue + re) * neuron.value);
                     dm = momentum * outputSynapse.change;
 
                     outputSynapse.weight += (dw + dm);
@@ -109,12 +115,7 @@ public class BackPropagation extends LearningAlgorithm {
         if (neuron.getInputSynapses().size() <= 0) {
             return 0.0;
         }
-
-        double value = neuron.getValue();
-        if (value == Double.NaN) {
-            throw new IllegalStateException("No value computed yet");
-        }
-        return (expectedValue - value) * neuron.getActivationFunction().derivative(value);
+        return lossFunction.compute(neuron, expectedValue);
     }
 
     /**
@@ -189,5 +190,41 @@ public class BackPropagation extends LearningAlgorithm {
      */
     public double getMeanSquareError() {
         return meanSquareError;
+    }
+
+    /**
+     * Sets the regularization algorithm. The standard algorithm is L2 regularization.
+     *
+     * @param regularization Regularization algorithm.
+     */
+    public void setRegularization(Regularization regularization) {
+        this.regularization = regularization;
+    }
+
+    /**
+     * Returns the regularization algorithm.
+     *
+     * @return Regularization algorithm.
+     */
+    public Regularization getRegularization() {
+        return regularization;
+    }
+
+    /**
+     * Sets the loss function for the back propagation.
+     *
+     * @param lossFunction Loss function.
+     */
+    public void setLossFunction(LossFunction lossFunction) {
+        this.lossFunction = lossFunction;
+    }
+
+    /**
+     * Returns the loss function.
+     *
+     * @return Loss function.
+     */
+    public LossFunction getLossFunction() {
+        return lossFunction;
     }
 }

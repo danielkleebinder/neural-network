@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * The logit function is mostly used as reverse to the sigmoid.<br>
  * <code>f(x) = ln(x/(1-x))</code><br><br>
@@ -15,12 +17,13 @@ public class Logit implements ActivationFunction {
     private static final long serialVersionUID = 2125861323454374205L;
 
     @Override
-    public double activate(double x) {
-        return Math.log(x / (1 - x));
+    public double activate(Neuron neuron) {
+        return Math.log(neuron.preActivationValue / (1 - neuron.preActivationValue));
     }
 
     @Override
-    public double derivative(double x) {
-        return 1.0 / (x - x * x);
+    public double derivative(Neuron neuron) {
+        double x = neuron.preActivationValue;
+        return 1.0 / (x - (x * x));
     }
 }

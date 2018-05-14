@@ -2,9 +2,12 @@ package test.learning;
 
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Sigmoid;
+import at.fhtw.ai.nn.activation.layer.Softmax;
 import at.fhtw.ai.nn.activation.rectifier.ExponentialRectifier;
+import at.fhtw.ai.nn.activation.rectifier.Rectifier;
 import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
+import at.fhtw.ai.nn.loss.CrossEntropy;
 import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
 
 import java.util.Random;
@@ -31,6 +34,7 @@ public class XORTest {
                 .build();
 
         BackPropagation backPropagation = new BackPropagation();
+        backPropagation.setLossFunction(new CrossEntropy());
         backPropagation.setLearningRate(0.2);
         backPropagation.setMomentum(0.9);
         backPropagation.setMeanSquareError(0.005);

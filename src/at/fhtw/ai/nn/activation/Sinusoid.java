@@ -1,5 +1,7 @@
 package at.fhtw.ai.nn.activation;
 
+import at.fhtw.ai.nn.Neuron;
+
 /**
  * Sinusoid activation function.<br>
  * <code>f(x) = sin(x)</code><br><br>
@@ -15,12 +17,12 @@ public class Sinusoid implements ActivationFunction {
     private static final long serialVersionUID = 5656466654313704898L;
 
     @Override
-    public double activate(double x) {
-        return Math.sin(x);
+    public double activate(Neuron neuron) {
+        return Math.sin(neuron.preActivationValue);
     }
 
     @Override
-    public double derivative(double x) {
-        return Math.cos(x);
+    public double derivative(Neuron neuron) {
+        return Math.cos(neuron.preActivationValue);
     }
 }

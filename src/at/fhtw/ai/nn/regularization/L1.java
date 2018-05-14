@@ -1,7 +1,6 @@
 package at.fhtw.ai.nn.regularization;
 
-import at.fhtw.ai.nn.NeuralNetwork;
-import at.fhtw.ai.nn.utils.AtomicDouble;
+import at.fhtw.ai.nn.Synapse;
 
 /**
  * The L1 regularization technique, also known as Lasse Regression, is a commonly used regularization method for weights
@@ -14,12 +13,26 @@ import at.fhtw.ai.nn.utils.AtomicDouble;
  * @since 0.0.1
  */
 public class L1 extends AbstractRegularization {
-    private static final long serialVersionUID = -9100303352979670830L;
+    private static final long serialVersionUID = 8100184290977301389L;
+
+    /**
+     * Creates a new L1 regularization.
+     */
+    public L1() {
+        this(1e-5);
+    }
+
+    /**
+     * Creates a new L1 regularization with the given lambda.
+     *
+     * @param lambda Lambda.
+     */
+    public L1(double lambda) {
+        this.lambda = lambda;
+    }
 
     @Override
-    public double compute(NeuralNetwork neuralNetwork) {
-        AtomicDouble sumWeights = new AtomicDouble(0.0);
-        neuralNetwork.getSynapses().stream().forEach(synapse -> sumWeights.value += Math.abs(synapse.weight));
-        return sumWeights.value * (lambda / 2.0);
+    public double compute(Synapse synapse) {
+        return lambda * Math.signum(synapse.weight);
     }
 }

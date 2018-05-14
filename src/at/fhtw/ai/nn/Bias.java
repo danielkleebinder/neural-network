@@ -96,4 +96,13 @@ public class Bias implements Serializable {
     public double compute() {
         return value * weight;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder("Bias{")
+                .append("value=").append(value)
+                .append(", weight=").append(weight)
+                .append('}')
+                .toString();
+    }
 }

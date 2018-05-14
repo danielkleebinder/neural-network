@@ -1,7 +1,6 @@
 package at.fhtw.ai.nn.regularization;
 
-import at.fhtw.ai.nn.NeuralNetwork;
-import at.fhtw.ai.nn.utils.AtomicDouble;
+import at.fhtw.ai.nn.Synapse;
 
 /**
  * The L2 regularization technique is an often used squared ridge regression method for adjusting weights in the neural
@@ -14,12 +13,26 @@ import at.fhtw.ai.nn.utils.AtomicDouble;
  * @since 0.0.1
  */
 public class L2 extends AbstractRegularization {
-    private static final long serialVersionUID = -8635354798349352556L;
+    private static final long serialVersionUID = 4140883881503525322L;
+
+    /**
+     * Creates a new L2 regularization.
+     */
+    public L2() {
+        this(1e-5);
+    }
+
+    /**
+     * Creates a new L2 regularization with the given lambda.
+     *
+     * @param lambda Lambda.
+     */
+    public L2(double lambda) {
+        this.lambda = lambda;
+    }
 
     @Override
-    public double compute(NeuralNetwork neuralNetwork) {
-        AtomicDouble sumWeights = new AtomicDouble(0.0);
-        neuralNetwork.getSynapses().stream().forEach(synapse -> sumWeights.value += (synapse.weight * synapse.weight));
-        return sumWeights.value * (lambda / 2.0);
+    public double compute(Synapse synapse) {
+        return lambda * synapse.weight;
     }
 }
