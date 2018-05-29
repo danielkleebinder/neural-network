@@ -3,7 +3,7 @@ package at.fhtw.ai.nn.activation;
 import at.fhtw.ai.nn.Neuron;
 
 /**
- * Most common used sigmoid function for activation.<br>
+ * Most commonly used activation function called sigmoid.<br>
  * <code>f(x) = 1 / (1 + e^-x)</code><br><br>
  * Derivative:<br>
  * <code>f'(x) = f(x) * (1 - f(x))</code>

@@ -5,6 +5,7 @@ import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.ActivationFunction;
 import at.fhtw.ai.nn.connect.Connector;
 import at.fhtw.ai.nn.initialize.Initializer;
+import at.fhtw.ai.nn.normalization.Normalization;
 import javafx.util.Builder;
 
 /**
@@ -241,6 +242,17 @@ public class NeuralNetworkBuilder implements Builder<NeuralNetwork> {
      */
     public NeuralNetworkBuilder connector(Connector connector) {
         neuralNetwork.setConnectors(connector);
+        return this;
+    }
+
+    /**
+     * Sets the normalization algorithm for all input values.
+     *
+     * @param normalization Normalization algorithm.
+     * @return This neural network builder.
+     */
+    public NeuralNetworkBuilder normalization(Normalization normalization) {
+        neuralNetwork.setNormalization(normalization);
         return this;
     }
 

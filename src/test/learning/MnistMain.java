@@ -8,6 +8,7 @@ import at.fhtw.ai.nn.connect.DenseConnector;
 import at.fhtw.ai.nn.initialize.XavierInitializer;
 import at.fhtw.ai.nn.learning.BackPropagation;
 import at.fhtw.ai.nn.loss.CrossEntropy;
+import at.fhtw.ai.nn.normalization.MinMax;
 import at.fhtw.ai.nn.regularization.Dropout;
 import at.fhtw.ai.nn.utils.BackPropagationBuilder;
 import at.fhtw.ai.nn.utils.NeuralNetworkBuilder;
@@ -46,10 +47,11 @@ public class MnistMain {
         System.out.println("Setting up Neural Network...");
         NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
                 .layer("Input Layer", numberOfInputNeurons, new Identity())
-                .layer("Hidden layer 1", numberOfHiddenNeurons, new SwishRectifier())
+                .layer("Hidden layer", numberOfHiddenNeurons, new SwishRectifier())
                 .layer("Output Layer", numberOfOutputNeurons, new Softmax())
                 .connector(new DenseConnector())
                 .initializer(new XavierInitializer())
+                .normalization(new MinMax())
                 .build();
 
         BackPropagation backPropagation = new BackPropagationBuilder()

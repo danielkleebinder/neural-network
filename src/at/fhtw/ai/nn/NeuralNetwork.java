@@ -4,6 +4,7 @@ import at.fhtw.ai.nn.activation.ActivationFunction;
 import at.fhtw.ai.nn.connect.Connector;
 import at.fhtw.ai.nn.initialize.Initializer;
 import at.fhtw.ai.nn.initialize.RandomInitializer;
+import at.fhtw.ai.nn.normalization.Normalization;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -39,6 +40,11 @@ public class NeuralNetwork implements Serializable {
      * Layer connection algorithm.
      */
     private Connector connector;
+
+    /**
+     * Normalization algorithm.
+     */
+    private Normalization normalization;
 
 
     /**
@@ -83,6 +89,24 @@ public class NeuralNetwork implements Serializable {
         return layers;
     }
 
+    /**
+     * Sets the normalization algorithm for all input values. Inputs passed to the neural network will be normalized
+     * with the given algorithm before firing all neurons.
+     *
+     * @param normalization Normalization algorithm.
+     */
+    public void setNormalization(Normalization normalization) {
+        this.normalization = normalization;
+    }
+
+    /**
+     * Returns the normalization algorithm.
+     *
+     * @return Normalization algorithm.
+     */
+    public Normalization getNormalization() {
+        return normalization;
+    }
 
     /**
      * Sets the activation function for all neurons in all layers.
@@ -145,14 +169,30 @@ public class NeuralNetwork implements Serializable {
     }
 
     /**
-     * Inputs the given values into the input layer.
+     * Inputs the given values into the input layer. The global neural network normalization algorithm will be used
+     * here.
      *
      * @param inputValues Input values.
      */
     public void input(double... inputValues) {
+        input(normalization, inputValues);
+    }
+
+    /**
+     * Inputs the given values into the input layer. The given normalization algorithm will be applied.
+     *
+     * @param normalization Normalization algorithm.
+     * @param inputValues   Input values.
+     */
+    public void input(Normalization normalization, double... inputValues) {
         if (inputValues.length != getInputLayer().getNeurons().size()) {
             throw new IllegalArgumentException("Number of inputs does not match number of input neurons");
         }
+
+        if (normalization != null) {
+            inputValues = normalization.normalize(inputValues);
+        }
+
         for (int i = 0; i < inputValues.length; i++) {
             getInputLayer().getNeurons().get(i).value = inputValues[i];
         }

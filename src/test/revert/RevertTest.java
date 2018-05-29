@@ -24,8 +24,8 @@ import java.util.Arrays;
 public class RevertTest {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println("Loading Neural Network...");
-        NeuralNetwork neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
-        //NeuralNetwork neuralNetwork = Utils.deserialize("C:\\Users\\Daniel\\Desktop\\pl3\\NeuralNetwork_E14_C0.dat");
+        //NeuralNetwork neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
+        NeuralNetwork neuralNetwork = Utils.deserialize("C:\\Users\\Daniel\\Desktop\\pl3\\NeuralNetwork_E9_C0.dat");
 
         System.out.println("Reversing Neural Network...");
         neuralNetwork.setActivationFunctions(new Logit());
@@ -83,7 +83,7 @@ public class RevertTest {
                     min = Math.min(min, pixel);
                     max = Math.max(max, pixel);
 
-                    pixel = activationFunction.activate(pixel) * 255.0;
+                    pixel = activationFunction.activate(pixel + 2.0) * 50.0;
 
                     pixel = Math.max(pixel, 0.0);
                     pixel = Math.min(pixel, 255.0);
