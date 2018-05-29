@@ -1,5 +1,6 @@
 package at.fhtw.ai.nn.regularization;
 
+import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.Synapse;
 
 /**
@@ -34,5 +35,10 @@ public class L2 extends AbstractRegularization {
     @Override
     public double compute(Synapse synapse) {
         return lambda * synapse.weight;
+    }
+
+    @Override
+    public double compute(Neuron neuron) {
+        return 1.0;
     }
 }

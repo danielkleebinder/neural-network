@@ -23,7 +23,7 @@ public class TestMain {
         NeuralNetwork neuralNetwork = null;
         try {
             //neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
-            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E19_C0.dat");
+            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E5_C0.dat");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -1,5 +1,6 @@
 package at.fhtw.ai.nn.regularization;
 
+import at.fhtw.ai.nn.Neuron;
 import at.fhtw.ai.nn.Synapse;
 
 import java.io.Serializable;
@@ -21,6 +22,14 @@ public interface Regularization extends Serializable {
      * @return Regularization term.
      */
     double compute(Synapse synapse);
+
+    /**
+     * Computes the delta update for the given neuron.
+     *
+     * @param neuron Neuron.
+     * @return Regularization term.
+     */
+    double compute(Neuron neuron);
 
     /**
      * Sets the lambda term for the regularization method.

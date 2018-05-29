@@ -2,87 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b34e2ce-5610-417f-9d27-57b9b37f8e5f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ArcTan.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/BentIdentity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/SoftPlus.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Softsign.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/Connector.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/DenseConnector.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/RandomConnector.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Hellinger.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/ItakuraSaito.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/KullbackLeibler.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/LossFunction.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Quadratic.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/genetic/runner/Entity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/genetic/runner/Obstacle.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/genetic/runner/Runner.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/genetic/runner/RunnerNetworkMain.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/genetic/runner/VisualizerFrame.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/junit/LossFunctionTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/junit/RegularizationTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/learning/XOR2OutputNeuronsTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SigmoidRectifier.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SwishRectifier.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Dropout.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/None.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Bias.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Bias.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Layer.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Layer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/NeuralNetwork.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/NeuralNetwork.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Neuron.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/Neuron.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/ActivationFunction.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/ActivationFunction.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Gaussian.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Gaussian.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/HyperbolicTangent.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/HyperbolicTangent.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Identity.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Identity.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Logit.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Logit.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Sigmoid.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Sigmoid.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Sinusoid.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Sinusoid.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/Step.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/ExponentialRectifier.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/ExponentialRectifier.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/NoisyRectifier.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/NoisyRectifier.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/Rectifier.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/activation/rectifier/Rectifier.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/learning/BackPropagation.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/learning/BackPropagation.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/AbstractRegularization.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/AbstractRegularization.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/L1.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/L1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/L2.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/L2.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/Regularization.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/regularization/Regularization.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/utils/BackPropagationBuilder.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/utils/BackPropagationBuilder.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/TestMain.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/TestMain.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/junit/ActivationFunctionTest.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/junit/ActivationFunctionTest.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/junit/NeuralNetworkTest.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/junit/NeuralNetworkTest.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/junit/ReverseNeuralNetworkTest.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/AdditionTest.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/AdditionTest.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/MnistMain.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/MnistMain.class" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/XORTest.class" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/test/learning/XORTest.class" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Bias.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Bias.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Layer.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Layer.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/NeuralNetwork.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/NeuralNetwork.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Neuron.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/Neuron.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ActivationFunction.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ActivationFunction.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CardinalSine.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CardinalSine.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Gaussian.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Gaussian.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/HyperbolicTangent.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/HyperbolicTangent.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Identity.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Identity.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Logit.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Logit.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sigmoid.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sigmoid.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sinusoid.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sinusoid.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Step.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/BinaryStep.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/ExponentialRectifier.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/ExponentialRectifier.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/NoisyRectifier.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/NoisyRectifier.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/AbstractRegularization.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/AbstractRegularization.java" />
+      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java" />
       <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/BackPropagationBuilder.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/BackPropagationBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.java" afterPath="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/Main.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/test/TestMain.java" afterPath="$PROJECT_DIR$/src/test/TestMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/junit/ActivationFunctionTest.java" afterPath="$PROJECT_DIR$/src/test/junit/ActivationFunctionTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/junit/NeuralNetworkTest.java" afterPath="$PROJECT_DIR$/src/test/junit/NeuralNetworkTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/junit/ReverseNeuralNetworkTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/learning/AdditionTest.java" afterPath="$PROJECT_DIR$/src/test/learning/AdditionTest.java" />
       <change beforePath="$PROJECT_DIR$/src/test/learning/MnistMain.java" afterPath="$PROJECT_DIR$/src/test/learning/MnistMain.java" />
       <change beforePath="$PROJECT_DIR$/src/test/learning/XORTest.java" afterPath="$PROJECT_DIR$/src/test/learning/XORTest.java" />
     </list>
@@ -101,43 +41,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RunnerNetworkMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/RunnerNetworkMain.java">
+      <file leaf-file-name="MnistMain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/learning/MnistMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1037">
+              <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VisualizerFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/VisualizerFrame.java">
+      <file leaf-file-name="TestMain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/TestMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-881">
-              <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Runner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-              <folding>
-                <element signature="e#1329#1330#0" expanded="true" />
-                <element signature="e#1394#1395#0" expanded="true" />
-                <element signature="e#1427#1428#0" expanded="true" />
-                <element signature="e#1525#1526#0" expanded="true" />
-                <element signature="e#1577#1578#0" expanded="true" />
-                <element signature="e#1623#1624#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="544">
+              <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,9 +81,10 @@
       <find>compute</find>
       <find>computeErr</find>
       <find>computeError</find>
-      <find>derivat</find>
       <find>setColor</find>
       <find>activationFunction =</find>
+      <find>derivative</find>
+      <find>derivat</find>
     </findStrings>
     <replaceStrings>
       <replace>activationFunction.derivative(new SimpleNeuron(</replace>
@@ -184,11 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CardinalSine.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/BentIdentity.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ArcTan.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Softsign.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/SoftPlus.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/Connect.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/Connector.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/DenseConnector.java" />
@@ -198,13 +113,10 @@
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Gaussian.java" />
         <option value="$PROJECT_DIR$/src/test/junit/ReverseNeuralNetworkTest.java" />
         <option value="$PROJECT_DIR$/src/test/junit/NeuralNetworkTest.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java" />
         <option value="$PROJECT_DIR$/src/test/junit/RegularizationTest.java" />
         <option value="$PROJECT_DIR$/src/test/junit/ActivationFunctionTest.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/ExponentialRectifier.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/BackPropagationBuilder.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CrossEntropyActivationFunction.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/LossFunction.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Quadratic.java" />
@@ -214,27 +126,35 @@
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/Layer.java" />
         <option value="$PROJECT_DIR$/src/test/learning/XOR2OutputNeuronsTest.java" />
-        <option value="$PROJECT_DIR$/src/test/learning/XORTest.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Hellinger.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/ItakuraSaito.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/KullbackLeibler.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/Bias.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/initialize/XavierInitializer.java" />
         <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/Neuron.java" />
-        <option value="$PROJECT_DIR$/src/test/TestMain.java" />
         <option value="$PROJECT_DIR$/src/test/learning/AdditionTest.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java" />
-        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/RunnerNetworkMain.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/runner/Entity.java" />
-        <option value="$PROJECT_DIR$/src/test/learning/MnistMain.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/runner/Obstacle.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/runner/VisualizerFrame.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/runner/RunnerNetworkMain.java" />
         <option value="$PROJECT_DIR$/src/test/genetic/runner/Runner.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SigmoidRectifier.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SigmoidWeightedRectifier.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SwishRectifier.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Dropout.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/None.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java" />
+        <option value="$PROJECT_DIR$/src/test/learning/XORTest.java" />
+        <option value="$PROJECT_DIR$/src/test/TestMain.java" />
+        <option value="$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java" />
+        <option value="$PROJECT_DIR$/src/test/learning/MnistMain.java" />
       </list>
     </option>
   </component>
@@ -245,10 +165,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="189" />
-    <option name="y" value="81" />
-    <option name="width" value="1647" />
-    <option name="height" value="894" />
+    <option name="x" value="140" />
+    <option name="y" value="75" />
+    <option name="width" value="1370" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -265,7 +185,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -294,6 +213,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
@@ -311,7 +231,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,7 +272,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RunnerNetworkMain">
+  <component name="RunManager" selected="Application.MnistMain">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -538,11 +458,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.RunnerNetworkMain" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MnistMain" />
-        <item index="2" class="java.lang.String" itemvalue="Application.AdditionTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.TestMain" />
-        <item index="4" class="java.lang.String" itemvalue="Application.XORTest" />
+        <item index="0" class="java.lang.String" itemvalue="Application.MnistMain" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestMain" />
+        <item index="2" class="java.lang.String" itemvalue="Application.XORTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.RunnerNetworkMain" />
+        <item index="4" class="java.lang.String" itemvalue="Application.AdditionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -573,6 +493,11 @@
       <workItem from="1526237486899" duration="2728000" />
       <workItem from="1526240362766" duration="1594000" />
       <workItem from="1526285683205" duration="44482000" />
+      <workItem from="1526631325568" duration="56000" />
+      <workItem from="1527148758593" duration="44000" />
+      <workItem from="1527540968078" duration="2015000" />
+      <workItem from="1527543051366" duration="353000" />
+      <workItem from="1527578915061" duration="7546000" />
     </task>
     <servers />
   </component>
@@ -609,10 +534,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62300000" />
+    <option name="totallyTimeSpent" value="72314000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="189" y="81" width="1647" height="894" extended-state="0" />
+    <frame x="140" y="75" width="1370" height="772" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -623,11 +548,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27360776" sideWeight="0.5020456" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24814422" sideWeight="0.4979544" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2822458" sideWeight="0.4979544" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30717352" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19645494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26723224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -644,7 +569,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,269 +580,28 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/junit/NeuralNetworkTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/AbstractRegularization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-          <folding>
-            <element signature="e#556#557#0" expanded="false" />
-            <element signature="e#582#583#0" expanded="false" />
-            <element signature="e#728#729#0" expanded="false" />
-            <element signature="e#764#765#0" expanded="false" />
-            <element signature="e#824#825#0" expanded="false" />
-            <element signature="e#870#871#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#547#548#0" expanded="false" />
-            <element signature="e#573#574#0" expanded="false" />
-            <element signature="e#719#720#0" expanded="false" />
-            <element signature="e#755#756#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/Synapse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="59" column="11" lean-forward="false" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
-          <folding>
-            <element signature="e#1189#1190#0" expanded="false" />
-            <element signature="e#1237#1238#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/junit/RegularizationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="53" lean-forward="true" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/junit/ActivationFunctionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/BinaryStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Softsign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ArcTan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/LossFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CrossEntropyActivationFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ActivationFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#1284#1285#0" expanded="false" />
-            <element signature="e#1312#1313#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sigmoid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#499#500#0" expanded="false" />
-            <element signature="e#572#573#0" expanded="false" />
-            <element signature="e#633#634#0" expanded="false" />
-            <element signature="e#691#692#0" expanded="false" />
-            <element signature="e#752#753#0" expanded="false" />
-            <element signature="e#779#780#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/LayerActivationFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/BackPropagationBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/junit/LossFunctionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/CrossEntropyActivationFunction.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/junit/LossFunctionTest.java" />
     <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/Layer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="143" column="54" lean-forward="false" selection-start-line="143" selection-start-column="54" selection-end-line="143" selection-end-column="54" />
-          <folding>
-            <element signature="e#2715#2716#0" expanded="true" />
-            <element signature="e#2761#2762#0" expanded="true" />
-            <element signature="e#2925#2926#0" expanded="true" />
-            <element signature="e#2976#2977#0" expanded="true" />
-            <element signature="e#3151#3152#0" expanded="true" />
-            <element signature="e#3216#3217#0" expanded="true" />
-            <element signature="e#3926#3927#0" expanded="true" />
-            <element signature="e#3953#3954#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/learning/XOR2OutputNeuronsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-          <folding>
-            <element signature="e#1392#1393#0" expanded="false" />
-            <element signature="e#1456#1457#0" expanded="false" />
-            <element signature="e#1769#1770#0" expanded="false" />
-            <element signature="e#1812#1813#0" expanded="false" />
-            <element signature="e#1873#1874#0" expanded="false" />
-            <element signature="e#1900#1901#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Hellinger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/ItakuraSaito.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="64" lean-forward="true" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/KullbackLeibler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Quadratic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/learning/XOR2OutputNeuronsTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Hellinger.java" />
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/ItakuraSaito.java" />
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/KullbackLeibler.java" />
     <entry file="file://$PROJECT_DIR$/src/test/revert/RevertTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="44" column="89" lean-forward="true" selection-start-line="44" selection-start-column="89" selection-end-line="44" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -925,15 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/learning/XORTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -941,7 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -949,7 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
           <caret line="132" column="9" lean-forward="true" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -957,26 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="92" lean-forward="false" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -984,15 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="54" column="11" lean-forward="true" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/Neuron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="246" column="74" lean-forward="false" selection-start-line="246" selection-start-column="74" selection-end-line="246" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1000,93 +644,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/Graphics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="199" column="25" lean-forward="false" selection-start-line="199" selection-start-column="25" selection-end-line="199" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/Graphics2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="456" column="12" lean-forward="false" selection-start-line="456" selection-start-column="12" selection-end-line="456" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/learning/MnistMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="49" column="76" lean-forward="false" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/learning/AdditionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="229" column="1" lean-forward="true" selection-start-line="229" selection-start-column="1" selection-end-line="229" selection-end-column="1" />
-          <folding>
-            <element signature="e#3375#3376#0" expanded="false" />
-            <element signature="e#3417#3418#0" expanded="false" />
-            <element signature="e#5129#5130#0" expanded="false" />
-            <element signature="e#5169#5170#0" expanded="false" />
-            <element signature="e#5281#5282#0" expanded="false" />
-            <element signature="e#5312#5313#0" expanded="false" />
-            <element signature="e#5763#5764#0" expanded="false" />
-            <element signature="e#5811#5812#0" expanded="false" />
-            <element signature="e#5937#5938#0" expanded="false" />
-            <element signature="e#5972#5973#0" expanded="false" />
-            <element signature="e#6282#6283#0" expanded="false" />
-            <element signature="e#6336#6337#0" expanded="false" />
-            <element signature="e#6473#6474#0" expanded="false" />
-            <element signature="e#6511#6512#0" expanded="false" />
-            <element signature="e#6744#6745#0" expanded="false" />
-            <element signature="e#6796#6797#0" expanded="false" />
-            <element signature="e#6954#6955#0" expanded="false" />
-            <element signature="e#6991#6992#0" expanded="false" />
-            <element signature="e#7174#7175#0" expanded="false" />
-            <element signature="e#7222#7223#0" expanded="false" />
-            <element signature="e#7354#7355#0" expanded="false" />
-            <element signature="e#7389#7390#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/Graphics.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/Graphics2D.java" />
     <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/NeuralNetworkBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,69 +660,301 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="220" column="72" lean-forward="true" selection-start-line="220" selection-start-column="72" selection-end-line="220" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Obstacle.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Entity.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/VisualizerFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Runner.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/RunnerNetworkMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1736">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/junit/ActivationFunctionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1485">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.base/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="1015" column="22" lean-forward="false" selection-start-line="1015" selection-start-column="22" selection-end-line="1015" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/LayerActivationFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/Neuron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="246" column="74" lean-forward="false" selection-start-line="246" selection-start-column="74" selection-end-line="246" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/utils/BackPropagationBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="59" column="34" lean-forward="false" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SigmoidRectifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/AbstractRegularization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Regularization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Maxout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/SwishRectifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/L1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#987#988#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/rectifier/Rectifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/None.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/regularization/Dropout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="35" column="19" lean-forward="true" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1064#1065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/ActivationFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/LossFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/learning/BackPropagation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2844">
+          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding>
+            <element signature="e#4328#4329#0" expanded="true" />
+            <element signature="e#4370#4371#0" expanded="true" />
+            <element signature="e#6082#6083#0" expanded="true" />
+            <element signature="e#6122#6123#0" expanded="true" />
+            <element signature="e#6234#6235#0" expanded="true" />
+            <element signature="e#6265#6266#0" expanded="true" />
+            <element signature="e#6716#6717#0" expanded="true" />
+            <element signature="e#6764#6765#0" expanded="true" />
+            <element signature="e#6890#6891#0" expanded="true" />
+            <element signature="e#6925#6926#0" expanded="true" />
+            <element signature="e#7235#7236#0" expanded="true" />
+            <element signature="e#7289#7290#0" expanded="true" />
+            <element signature="e#7426#7427#0" expanded="true" />
+            <element signature="e#7464#7465#0" expanded="true" />
+            <element signature="e#7697#7698#0" expanded="true" />
+            <element signature="e#7749#7750#0" expanded="true" />
+            <element signature="e#7907#7908#0" expanded="true" />
+            <element signature="e#7944#7945#0" expanded="true" />
+            <element signature="e#8127#8128#0" expanded="true" />
+            <element signature="e#8175#8176#0" expanded="true" />
+            <element signature="e#8307#8308#0" expanded="true" />
+            <element signature="e#8342#8343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/layer/Softmax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/activation/Sigmoid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/Quadratic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/learning/XORTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/loss/CrossEntropy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+          <folding>
+            <element signature="e#659#660#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#880#881#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1944#1945#0" expanded="true" />
+            <element signature="e#1977#1978#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/learning/AdditionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/at/fhtw/ai/nn/connect/RandomConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-          <folding>
-            <element signature="e#752#753#0" expanded="false" />
-            <element signature="e#818#819#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Obstacle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        <state relative-caret-position="-209">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Entity.java">
+    <entry file="file://$PROJECT_DIR$/src/test/learning/MnistMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+        <state relative-caret-position="1037">
+          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/VisualizerFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-881">
-          <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/RunnerNetworkMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/genetic/runner/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-            <element signature="e#1427#1428#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
-            <element signature="e#1577#1578#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -4,7 +4,8 @@ import at.fhtw.ai.nn.Layer;
 import at.fhtw.ai.nn.Neuron;
 
 /**
- * Maxout activation function.<br>
+ * Maxout activation function. Maxout layers use the highest neuron value in the current layer and apply it as output of
+ * any neuron in the layer.<br>
  * <code>f(x) = max_i(x_i)</code><br><br>
  * Derivative:<br>
  * <code>f'(x) = 1 for j = argmax_i(x_i)</code><br>

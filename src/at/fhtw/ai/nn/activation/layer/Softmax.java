@@ -51,8 +51,9 @@ public class Softmax implements LayerActivationFunction {
 
     @Override
     public double derivative(Neuron neuron) {
-        // Mostly ignoring kronecker delta here, because cross-entropy will cancel this out anyways
-        return neuron.preActivationValue * (kroneckerDelta(0, 0) - neuron.preActivationValue);
+        // Ignoring derivative of softmax, because the cross-entropy loss function will cancel it out anyways
+        // f'(x) = f(x) * (δ - f(x))
+        return 1.0;
     }
 
     private double kroneckerDelta(int i, int j) {

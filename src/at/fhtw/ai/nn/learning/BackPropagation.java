@@ -10,6 +10,11 @@ import at.fhtw.ai.nn.regularization.L2;
 import at.fhtw.ai.nn.regularization.Regularization;
 
 /**
+ * Backpropagation is a special case of an older and more general technique called automatic differentiation. In the
+ * context of learning, backpropagation is commonly used by the gradient descent optimization algorithm to adjust the
+ * weight of neurons by calculating the gradient of the loss function. This technique is also sometimes called backward
+ * propagation of errors, because the error is calculated at the output and distributed back through the network layers.
+ * <p>
  * Created On: 24.04.2018
  *
  * @author Daniel Kleebinder
@@ -25,6 +30,9 @@ public class BackPropagation extends LearningAlgorithm {
     private Regularization regularization = new L2();
     private LossFunction lossFunction = new Quadratic();
 
+    /**
+     * Computes the errors for the last aka output layer.
+     */
     private void computeOutputLayerErrors() {
         Layer outputLayer = neuralNetwork.getOutputLayer();
 
@@ -40,6 +48,9 @@ public class BackPropagation extends LearningAlgorithm {
         }
     }
 
+    /**
+     * Computes the errors for all hidden layers.
+     */
     private void computeHiddenLayerErrors() {
         // Skip last layer. Output layer errors were already computed!
         for (int i = neuralNetwork.getLayers().size() - 2; i >= 1; i--) {
@@ -54,11 +65,17 @@ public class BackPropagation extends LearningAlgorithm {
         }
     }
 
+    /**
+     * Tries to adjust all weights in the network as good as possible to better match the desired output values.
+     */
     private void adjustLayerWeights() {
         double re, dw, dm;
         for (int i = neuralNetwork.getLayers().size() - 1; i >= 0; i--) {
             Layer currentLayer = neuralNetwork.getLayers().get(i);
             for (Neuron neuron : currentLayer.getNeurons()) {
+                if (regularization != null && regularization.compute(neuron) <= 0.0) {
+                    continue;
+                }
                 for (Synapse outputSynapse : neuron.getOutputSynapses()) {
                     re = learningRate * (regularization == null ? 0.0 : regularization.compute(outputSynapse));
                     dw = learningRate * ((outputSynapse.destinationNeuron.errorValue + re) * neuron.value);
@@ -73,6 +90,9 @@ public class BackPropagation extends LearningAlgorithm {
         }
     }
 
+    /**
+     * Resets backpropagation network parameters.
+     */
     private void resetNetwork() {
         for (Layer layer : neuralNetwork.getLayers()) {
             for (Neuron neuron : layer.getNeurons()) {
