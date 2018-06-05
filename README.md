@@ -1,6 +1,21 @@
 # Neural Network in Java
 A general purpose implementation of a neural network in Java. Capable of handling multiple layers with a given amount of neurons in each layer, the following network implementation is able to generate a precision of up to 97,74% accuracy classifying the MNIST dataset.
 
+## Weight Visualization
+The network is capable of firing backwards, which means output values are specified at the output neurons and the neural network is run backwards. This will generate input values which the network "guessed". The following images were generated after "asking" the MNIST-network how it thinks a zero, a three and a seven look like.
+
+![Zero](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_0.png?raw=true)
+![Three](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_3.png?raw=true)
+![Seven](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_7.png?raw=true)
+
+These three images are rather clear and show, that the network has little to no troubles classifying these numbers. On the other side of the spectrum are numbers like six, eight and nine.
+
+![Six](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_6.png?raw=true)
+![Eight](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_8.png?raw=true)
+![Nine](https://github.com/danielkleebinder/neural-network/blob/master/imgs/number_9.png?raw=true)
+
+The network is also capable of classifying these numbers, but with a little lower accuracy. It is rather interesting to see how computer brains think numbers look like. This feature is often quite useful for debugging huge networks with thousands and thousands of neurons and millions of synapses.
+
 ## Activation Functions
 The library supports a lot of different activation functions. For example is almost every activation function from the corresponding [Wikipedia article](https://en.wikipedia.org/wiki/Activation_function) implemented. Some of the most common activation functions are:
 
@@ -26,6 +41,7 @@ The neural network library supports out of the box many different loss functions
 The regularization method is used to prevent the network from over-fitting considering a specific set of train data. Some neural networks may need regularization methods, especially the ones with very complex learning patterns. Other networks on the other hand (like most XOR-networks) do not need regularization at all.
 
 The following methods are supported out of the box
+
 * Dropout - For example random 20% of all neurons will be left out during learning process.
 * L1 - The "Lasse Regression" methods computes a linear offset for each synaptic weight.
 * L2 - This squared ridge regression method is very common in neural networks. It depends on the synaptic weights.
@@ -33,6 +49,7 @@ The following methods are supported out of the box
 
 ## Other Features
 The neural network library also supports many other useful features like
+
 * Builder-classes for the networks, layers, neurons and learning methods
 * Different initialization methods like xavier and random
 * Normalization methods like Gaussian- and Min-Max-Input-Normalization

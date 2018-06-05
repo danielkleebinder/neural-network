@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * - Removed OTSU Algorithm
+ * Fully functional MNIST neural network.
  * <p>
  * Created On: 29.04.2018
  *
@@ -71,8 +71,8 @@ public class MnistMain {
         System.out.println();
         System.out.println("Loading Train Images...");
         MNISTImageLoadingService dilsTrainData = new MNISTImageLoadingService(
-                "C:/Users/Daniel/Desktop/train/train-labels-idx1-ubyte.dat",
-                "C:/Users/Daniel/Desktop/train/train-images-idx3-ubyte.dat"
+                "./train/train-labels-idx1-ubyte.dat",
+                "./train/train-images-idx3-ubyte.dat"
         );
 
         List<MnistImage> trainImages = null;
@@ -149,7 +149,7 @@ public class MnistMain {
      */
     private static void save(NeuralNetwork neuralNetwork, int epochCount, int saveCount) {
         try {
-            Utils.serialize(neuralNetwork, "C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E" + epochCount + "_C" + saveCount + ".dat");
+            Utils.serialize(neuralNetwork, "./result/NeuralNetwork_E" + epochCount + "_C" + saveCount + ".dat");
         } catch (IOException e) {
             e.printStackTrace();
         }

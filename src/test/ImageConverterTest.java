@@ -24,8 +24,8 @@ import java.util.Map;
 public class ImageConverterTest {
     public static void main(String[] args) {
         MNISTImageLoadingService loadingService = new MNISTImageLoadingService(
-                "C:\\Users\\Daniel\\Desktop\\train\\t10k-labels-idx1-ubyte.dat",
-                "C:\\Users\\Daniel\\Desktop\\train\\t10k-images-idx3-ubyte.dat");
+                ".\\train\\t10k-labels-idx1-ubyte.dat",
+                ".\\train\\t10k-images-idx3-ubyte.dat");
 
         List<MnistImage> images = null;
         try {
@@ -52,7 +52,7 @@ public class ImageConverterTest {
                 ImageIO.write(
                         img,
                         "PNG",
-                        new File("C:\\Users\\Daniel\\Desktop\\train\\otsu\\number_" + mnistImage.getLabel() + ".png"));
+                        new File(".\\train\\otsu\\number_" + mnistImage.getLabel() + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -22,8 +22,7 @@ public class TestMain {
         System.out.println("Loading Neural Network...");
         NeuralNetwork neuralNetwork = null;
         try {
-            //neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
-            neuralNetwork = Utils.deserialize("C:/Users/Daniel/Desktop/pl3/NeuralNetwork_E10_C0.dat");
+            neuralNetwork = Utils.deserialize("../NeuralNetwork_E20_97_74.dat");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -32,8 +31,8 @@ public class TestMain {
 
         System.out.println("Loading Test Images...");
         MNISTImageLoadingService dilsTestData = new MNISTImageLoadingService(
-                "C:/Users/Daniel/Desktop/train/t10k-labels-idx1-ubyte.dat",
-                "C:/Users/Daniel/Desktop/train/t10k-images-idx3-ubyte.dat"
+                "./train/t10k-labels-idx1-ubyte.dat",
+                "./train/t10k-images-idx3-ubyte.dat"
         );
 
         List<MnistImage> testImages = null;
