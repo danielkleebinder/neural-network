@@ -3,6 +3,7 @@ package test.learning;
 import at.fhtw.ai.nn.NeuralNetwork;
 import at.fhtw.ai.nn.activation.Identity;
 import at.fhtw.ai.nn.activation.layer.Softmax;
+import at.fhtw.ai.nn.activation.rectifier.ExponentialRectifier;
 import at.fhtw.ai.nn.activation.rectifier.SwishRectifier;
 import at.fhtw.ai.nn.connect.DenseConnector;
 import at.fhtw.ai.nn.initialize.XavierInitializer;
@@ -47,12 +48,17 @@ public class MnistMain {
         System.out.println("Setting up Neural Network...");
         NeuralNetwork neuralNetwork = new NeuralNetworkBuilder()
                 .layer("Input Layer", numberOfInputNeurons, new Identity())
-                .layer("Hidden layer", numberOfHiddenNeurons, new SwishRectifier())
+                .layer("Hidden layer (Swish)", numberOfHiddenNeurons, new SwishRectifier())
+                .layer("Hidden layer (ELU)", numberOfHiddenNeurons / 2, new ExponentialRectifier())
                 .layer("Output Layer", numberOfOutputNeurons, new Softmax())
                 .connector(new DenseConnector())
                 .initializer(new XavierInitializer())
                 .normalization(new MinMax())
                 .build();
+
+        System.out.println("   Number of layers: " + neuralNetwork.getLayers().size());
+        System.out.println("   Number of neurons: " + neuralNetwork.getNeurons().size());
+        System.out.println("   Number of synapses: " + neuralNetwork.getSynapses().size());
 
         BackPropagation backPropagation = new BackPropagationBuilder()
                 .regularization(new Dropout())
@@ -62,6 +68,7 @@ public class MnistMain {
                 .neuralNetwork(neuralNetwork)
                 .build();
 
+        System.out.println();
         System.out.println("Loading Train Images...");
         MNISTImageLoadingService dilsTrainData = new MNISTImageLoadingService(
                 "C:/Users/Daniel/Desktop/train/train-labels-idx1-ubyte.dat",
@@ -82,6 +89,7 @@ public class MnistMain {
         }
 
         // Do learning here
+        System.out.println();
         System.out.println("Start Learning Process...");
         int epochIterations = 0;
         double epochError = 0.0;
